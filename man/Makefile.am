@@ -1,0 +1,23 @@
+# 
+#    Copyright 2013, 2014 2015, 2016, 2017, 2018 (c)
+#    Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
+# 
+#    file: Makefile.am
+#    This file is part of GnuDOS.
+#
+#    GnuDOS is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GnuDOS is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GnuDOS.  If not, see <http://www.gnu.org/licenses/>.
+#    
+
+EXTRA_DIST = man1/gnudos.1 man1/mino.1 man1/prime.1
+man_MANS = man1/gnudos.1 man1/mino.1 man1/prime.1
