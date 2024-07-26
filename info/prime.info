@@ -1,6 +1,6 @@
-This is mino.info, produced by makeinfo version 6.8 from mino.texi.
+This is prime.info, produced by makeinfo version 6.8 from prime.texi.
 
-This manual is for the mino text editor (version 2.1).
+This manual is for the Prime console file manager (version 2.1).
 
    Copyright (C) 2014, 2015, 2016, 2017, 2018, 2024 Mohammed Isam.
 
@@ -13,45 +13,46 @@ This manual is for the mino text editor (version 2.1).
 
 INFO-DIR-SECTION GNU Utilities
 START-INFO-DIR-ENTRY
-* mino: (mino).                 Using the mino text editor.
+* prime: (prime).               Using Prime console file manager
 END-INFO-DIR-ENTRY
 
 
-File: mino.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: prime.info,  Node: Top,  Next: Overview,  Up: (dir)
 
-mino
-****
+Prime
+*****
 
-This manual is for the Mino text editor (version 2.1).
+This manual is for the Prime console file manager (version 2.1).
 
 * Menu:
 
-* Overview:: Overview of the mino text editor
-* Main Window:: Mino main window
+* Overview:: Overview of the Prime console file manager
+* Main Window:: Prime main window
 * Menus:: Working around with menus
 * Shortcuts:: Using keyboard shortcuts
 * GNU Free Documentation License::
 * Index::
 
 
-File: mino.info,  Node: Overview,  Next: Main Window,  Prev: Top,  Up: Top
+File: prime.info,  Node: Overview,  Next: Main Window,  Prev: Top,  Up: Top
 
-1 Overview of the mino text editor
-**********************************
+1 Overview of the Prime console file manager
+********************************************
 
-1.1 What is mino?
-=================
+1.1 What is Prime?
+==================
 
-Mino is a GNU software, part of the GnuDOS package.
-Mino is a text file editor for use with the GNU/Linux console/terminals.
-The idea is to provide a text editor that is user friendly and easy to
-use for those who came from a DOS background.  Having accustomed to
-SHIFT-selecting text, using CTRL-shortcut keys and so on makes it hard
-for the regular Joe to dive in head-first into the GNU syntax.  Mino
-provides a multi-level experience, the level of complexity can be
+Prime is a GNU software, part of the GnuDOS package.
+Prime is a file manager which works under the GNU/Linux console.  It was
+influenced by other file managers (like the well known XTree Gold which
+was popular under MS-DOS). It provides a user friendly interface with
+menus, shortcuts, and key navigation.  It is distributed as part of the
+GnuDOS package which was developed to help users coming from a DOS-like
+environment feel ease when dealing with the GNU system.
+Prime provides multi-level experience, the level of complexity can be
 adjusted by the user: you want to use DOS-keys with a few basic GNU
 ones?  you want to go with the full power of the GNU system?  All are
-options that are provided by the six levels of experience of mino:
+options that are provided by the six levels of experience of Prime:
 
   1. Newbie: All DOS shortcut keys, no GNU keys yet
   2. Novice: DOS shortcut keys, some of which are replaced with GNU's
@@ -61,20 +62,20 @@ options that are provided by the six levels of experience of mino:
   6. Veteran: Only GNU keys, no DOS-like keys
 
    You start with level 1 by default.
-To set your level of experience, call mino with the ''--level X'' or
-''-l X'' options, Where X is the desired level, for example:
+To set your level, call prime with the ''--level X'' or ''-l X'' option,
+Where X is the level desired, for example:
 
-     $ mino --level 2
+     $ prime --level 2
 
 1.2 Which keys are defined for which level?
 ===========================================
 
 Below is a table showing the DOS-like key combinations along with their
 respective GNU key bindings.  To the right is the level at which a
-certain GNU key is defined.  Each key defined is recognized in higher
-levels (e.g.  level 2 keys are recognized in levels 3-4-5-6).  Note that
-in level 6 only GNU keys are defined, no DOS key will work at all at
-this level!.
+certain key is defined.  Each key defined is recognized in higher levels
+(e.g.  level 2 keys are recognized in levels 3-4-5-6).  Note that in
+level 6 only GNU keys are defined, no DOS key will work at all at this
+level!.
 
    Keybindings:
 In the table below, C-something means pressing down CTRL and then
@@ -127,184 +128,137 @@ no DOS bindings
 1.3 Why should I use it?
 ========================
 
-If you are new to the GNU system and find it hard to dive-in head-first
-into the GNU keys and shortcuts that GNU programs like emacs use, this
-is the place to start.  Use your well-known DOS-like shortcuts, in the
-same time learn how to use the GNU system shortcuts.
+If you like using the console (like most GNU/Linux vintage users do),
+and you come from a DOS background, having a nice and easy way to run
+through your directory trees and moving files around will be an
+important asset in your toolset, plus you will easily dive into the GNU
+system key bindings.
 
-1.4 How to run it?
+1.4 What do I need?
+===================
+
+The program can be invoked from the GNU/Linux console or under GUI from
+a terminal.
+
+1.5 How to use it?
 ==================
 
-After installing the GnuDOS package, simply type:
+Simply invoke the 'prime' executable from your shell:
 
-     $ mino
+     $ prime
 
-   on your console (or GUI terminal) and the editor will run.  If you
-want to load a file into mino on startup, run:
+   The components of the main window can be found under *Note Main
+Window::.  The description of the menus is in *Note Menus::.  Shortcut
+keys are detailed in *Note Shortcuts::.
 
-     $ mino path-to-file
+   If you want to reset the configuration file to it's default values,
+invoke prime with one of the following options:
 
-   To reset the configuration file:
+     $ prime --reset-config
+     $ prime -r
 
-     $ mino --reset-config
+   You can export the directory tree of a given directory to a given
+file without starting prime's main interface by typing:
 
-   To show command line help:
+     $ prime -e|--export dirname filename
 
-     $ mino [--help|-h]
+   Note you will only type ''-e'' or ''--export'', not both.
 
-1.5 How does mino remember my preferences?
-==========================================
+   Prime loads the directory tree of the current working directory by
+default.  To open prime with the directory tree of another location,
+type:
 
-Mino stores its configuration in a file named '.mino.conf' under your
-home directory.  You can edit it by hand (or using mino!), but this is
-not advisable.  Use the Options menu under mino to change your
-preferences and mino will save them to the config file in the proper
-way.
+     $ prime dirname
 
-1.6 What about sentence highlighting?
-=====================================
+   Where 'dirname' is the path name which is to be loaded to prime on
+program startup.
+Currently there is partial wildcard support.  That means for example
+that you can specify '~' to indicate your home directory, and you can
+use '*' inside the program (in the 'Find' dialog box) but no further
+wildcards (like '?')  are supported at that time.  For example,
+entering:
 
-Currently mino recognizes the following file types (by their extension):
-   * C/C++ Source and header files
-   * Perl scripts
-   * Shell scripts
-   * Python scripts
-   * x86 Assembly source listings
-   * Texi info source files
-   * HTML page files
-   * JavaScript source files
-   * QBASIC source files
-   * GNU Pascal source files
-   * Fortran 77 v4.0 source files
+     ~/projects
+   In the find dialog box will search the subdirectory 'projects' of the
+home directory
+The following are examples of accepted ways to enter wildcard strings in
+the Find file dialog box:
 
-   Whenever you open a file of one of these types, mino will
-automatically adjust the colors of the view so that the language
-keywords, library functions, and operators (like +-*/ and so on) are
-highlighted, each in a different color, on a black background, to ease
-writing your programs.
-
-1.7 What else?
-==============
-
-There is one catch: when running under the console, some key
-combinations are not recognised (e.g.  CTRL+arrow-keys).  This is
-because starting with version 2.0, the GnuDOS library uses ncurses to
-get keyboard input and some keys, especially modifier keys, are not
-captured.  This means, for example, you might not be able to hold down
-SHIFT and use the arrow keys to select text.  The solution is using
-CTRL+E, which activates the Select mode.  Enter the Select mode, use the
-arrow keys to size your selection, do whatever you want with it, and
-exit the Select mode.
-
-   And that's it for the intro!
+     file*
+     *.c
+     a*.c
 
 
-File: mino.info,  Node: Main Window,  Next: Menus,  Prev: Overview,  Up: Top
+File: prime.info,  Node: Main Window,  Next: Menus,  Prev: Overview,  Up: Top
 
-2 Mino main window
-******************
+2 Prime main window
+*******************
 
-After running mino, you are faced with a window that has the following
+After running prime, you are faced with a window that has the following
 components:
 
-2.1 The Menu bar
-================
+2.1 Menu bar
+============
 
-Located at the top of the window.  Contains the menus: File, Edit,
-Options, and Help.  The details of these menus can be found under *Note
-Menus::.
+Located at the top of the window.  Contains the menus: File, Edit, and
+Help.  The details of these menus can be found under *Note Menus::.
 
-2.2 Status bar
-==============
+2.2 Main Window
+===============
 
-At the bottom is the status bar.  It shows the current state of the
-file, which can be:
-
-   * New: After opening a fresh mino window or selecting New from the
-     File Menu
-   * Opened: When an existing file is opened
-   * Saved: After saving the edited file
-   * Modified: When any editing has been done but not yet been saved
-   * Idle: Nothing has happened yet!
-
-   The right side of the status bar shows the current position in file
-in terms of the line and column.
-There are indicators which can appear in the status bar:
-
-   * CAPS: When Capslock is On (in version 2.0, CAPS is not captured and
-     this indicator does not show)
-   * INS: When inserting mode is on (pressing INSERT)
-   * SEL: When selecting mode is on (pressing SHIFT or CTRL+E)
-
-2.3 Editing area
-================
-
-Most of the main window will be occupied by the editing field containing
-the lines of the open file.  Most of your editing work will be done in
-this area.
+The rest of the main window is divided into three parts:
+   * Directory view (left side): you can navigate the directory tree of
+     the current working directory here
+   * File view (right side): navigate/select files in the current
+     directory
+   * Bottom view: shows the current working directory and the number of
+     selected items
 
 
-File: mino.info,  Node: Menus,  Next: Shortcuts,  Prev: Main Window,  Up: Top
+File: prime.info,  Node: Menus,  Next: Shortcuts,  Prev: Main Window,  Up: Top
 
 3 Working around with menus
 ***************************
 
-Menus are on the menu bar at the top of the *Note Main Window::.  They
+Menus are on the menu bar on the top of the *Note Main Window::.  They
 are:
 
 3.1 File Menu (opened by pressing ALT+F):
 =========================================
 
-   * New: Clears the editing area and opens a new file
-   * Open File: Opens a previously saved file for editing
-   * Save File: Saves the current file to disk
-   * Save As: Saves the current file under a different name
-   * Print: Prints the current file to printer (not currently
+   * Open Location: Opens a specific path to view its directory tree
+   * Export: Saves the directory tree into a file on disk
+   * Print: Prints the directory tree to printer (not currently
      implemented)
-   * Exit: Exits mino
+   * Exit: Exits Prime
 
 3.2 Edit Menu (opened by pressing ALT+E):
 =========================================
 
-   * Cut: Cuts the current selection and places text into the mino
-     clipboard
-   * Copy: Copies the current selection to the mino clipboard
-   * Paste: Pastes whatever is in the mino clipboard into the current
-     position in file
-   * Select All: Selects the whole document
-   * Undo: Undoes the last action
-   * Redo: Redoes the last action undone
-   * Find: Finds text in the file
-   * Replace: Finds and replaces specific text in the file
-   * Delete Line: Deletes the line under the cursor
-   * Toggle Select Mode:
-        - Toggles the select mode On (like pressing SHIFT)
-        - Or Off (Like releasing SHIFT)
+   * Space bar: toggle selection.  Selected items are marked with a "*"
+   * Cut selection (if no selection, cut current item).  Cut items are
+     marked with a "^"
+   * Copy selection (if no selection, copy current item).  Copy items
+     are marked with a "#"
+   * Paste: Pastes the list of cut/copied files and directories into the
+     current path
+   * Mark All: Mark all files/dirs with '*'
+   * Unmark All: Unmarks all files/dirs
+   * Clear selection: Clears all marks including items marked cut/copy
+   * Find: Finds a file
 
-3.3 Options Menu (opened by pressing ALT+O):
-============================================
-
-   * Change colors: Opens a dialog box to select different colors for
-     windows, menu bar, ...
-   * Tab spaces: Define the number of spaces to be inserted when you
-     press the TAB key
-   * Reset config: Resets the configuration (colors and tab spaces)
-
-   All the Options menu items write the new values into the config file
-(~/.mino.conf).
-
-3.4 Help Menu (opened by pressing ALT+H):
+3.3 Help Menu (opened by pressing ALT+H):
 =========================================
 
    * View README: Displays the README file installed with the GnuDOS
      package
    * GNU keybindings: Displays the keybindings file installed with the
      GnuDOS package
-   * Quick Referece: Shows a quick reference for mino functions
-   * About Mino: Shows the About dialog box
+   * Quick Referece: Shows a quick reference for Prime functions
+   * About Prime: Shows the About dialog box
 
 
-File: mino.info,  Node: Shortcuts,  Next: GNU Free Documentation License,  Prev: Menus,  Up: Top
+File: prime.info,  Node: Shortcuts,  Next: GNU Free Documentation License,  Prev: Menus,  Up: Top
 
 4 Using keyboard shortcuts
 **************************
@@ -313,28 +267,29 @@ Moving around with Shortcut Keys:
  ALT+F: Open File menu
  ALT+E: Open Edit menu
  ALT+H: Open Help menu
- ALT+O: Open Options menu
 
 (1) File menu shortcuts:
- CTRL+O: Open file
- CTRL+S: Save file
- CTRL+P: Print file (currently under development)
+ CTRL+N: Create new directory under the current working directory
+ CTRL+O: Open a path
+ CTRL+E: Export directory tree to external file
+ CTRL+P: Print current directory tree
  CTRL+Q: Exit program
 
 (2) Edit menu shortcuts:
- CTRL+X: Cut selection
- CTRL+C: Copy selection
- CTRL+V: Paste selection
- CTRL+F: Find
- CTRL+R: Find & Replace
- CTRL+A: Select All
- CTRL+D: Delete Line
- CTRL+Z: Undo
- CTRL+Y: Redo
- CTRL+E: Toggle select mode
+ CTRL+X: Cut selection (if no selection, cut current item).
+  Cut items are marked with "^"
+ CTRL+C: Copy selection (if no selection, copy current item).
+  Copy items are marked with "#"
+ CTRL+V: Paste cut/copy items in the current directory
+ CTRL+F: Find a file
+ CTRL+A: Select all items in the active dir/file window
+ CTRL+Z: Deselects all items in the active dir/file window
+ CTRL+W: Deselect all, including items marked for cut/copy
+ Space bar: Toggle selection.  Selected items are marked "*"
+
 
 
-File: mino.info,  Node: GNU Free Documentation License,  Next: Index,  Prev: Shortcuts,  Up: Top
+File: prime.info,  Node: GNU Free Documentation License,  Next: Index,  Prev: Shortcuts,  Up: Top
 
 Appendix A GNU Free Documentation License
 *****************************************
@@ -766,7 +721,7 @@ software license, such as the GNU General Public License, to permit
 their use in free software.
 
 
-File: mino.info,  Node: Index,  Prev: GNU Free Documentation License,  Up: Top
+File: prime.info,  Node: Index,  Prev: GNU Free Documentation License,  Up: Top
 
 Index
 *****
@@ -774,50 +729,48 @@ Index
  [index ]
 * Menu:
 
-* Code highlighting:                     Overview.            (line 128)
-* Command line help:                     Overview.            (line 115)
-* Edit menu:                             Menus.               (line  19)
-* Editing area:                          Main Window.         (line  38)
+* About Prime:                           Overview.            (line   5)
+* Bottom view:                           Main Window.         (line  23)
+* Command line export:                   Overview.            (line 124)
+* Directory view:                        Main Window.         (line  19)
+* Edit menu:                             Menus.               (line  17)
+* Exporting from the command line:       Overview.            (line 124)
 * FDL, GNU Free Documentation License:   GNU Free Documentation License.
                                                               (line   9)
 * File menu:                             Menus.               (line   8)
-* File state:                            Main Window.         (line  22)
-* Help menu:                             Menus.               (line  49)
-* Highlighting mode:                     Overview.            (line 127)
-* How to run mino:                       Overview.            (line 102)
-* Invoking mino:                         Overview.            (line 102)
-* Key bindings:                          Overview.            (line  36)
-* Keyboard shortcuts:                    Menus.               (line  60)
-* Main window:                           Main Window.         (line   6)
-* Menu bar:                              Main Window.         (line   8)
-* Menus:                                 Main Window.         (line  45)
-* Mino menus:                            Main Window.         (line  44)
-* Mino Overview:                         Overview.            (line   5)
-* Options menu:                          Menus.               (line  37)
-* Overview:                              Overview.            (line   6)
-* Reasons to use mino:                   Overview.            (line  94)
-* Resetting the config file:             Overview.            (line 111)
-* Running mino:                          Overview.            (line 102)
-* Sentence highlighting:                 Overview.            (line 128)
-* Shortcuts:                             Menus.               (line  60)
-* Shortcuts keys:                        Menus.               (line  59)
-* Starting mino:                         Overview.            (line 102)
-* Status bar:                            Main Window.         (line  15)
-* Status indicators:                     Main Window.         (line  33)
-* Why to use it:                         Overview.            (line  94)
-* Why to use mino:                       Overview.            (line  94)
-* Work area:                             Main Window.         (line  37)
+* File view:                             Main Window.         (line  21)
+* Help menu:                             Menus.               (line  32)
+* How to run Prime:                      Overview.            (line 106)
+* Key bindings:                          Overview.            (line  33)
+* Keyboard shortcuts:                    Menus.               (line  43)
+* Main window:                           Main Window.         (line   3)
+* Manu bar:                              Main Window.         (line   9)
+* Menus:                                 Menus.               (line   3)
+* Overview:                              Overview.            (line   3)
+* Prime main window:                     Main Window.         (line   3)
+* Prime menu bar:                        Main Window.         (line   8)
+* Prime Overview:                        Overview.            (line   3)
+* Resetting the configuration file:      Overview.            (line 118)
+* Running Prime:                         Overview.            (line 107)
+* Shortcut keys:                         Menus.               (line  42)
+* Shortcuts:                             Menus.               (line  43)
+* Start Prime with a specific directory: Overview.            (line 131)
+* Starting Prime:                        Overview.            (line 107)
+* What is Prime:                         Overview.            (line   6)
+* Why to use it:                         Overview.            (line  91)
+* Why to use Prime:                      Overview.            (line  92)
+* Working around with menus:             Menus.               (line   3)
 
 
 
 Tag Table:
-Node: Top735
-Node: Overview1071
-Node: Main Window7877
-Node: Menus9241
-Node: Shortcuts11380
-Node: GNU Free Documentation License12034
-Node: Index34512
+Node: Top752
+Node: Overview1112
+Node: Main Window7505
+Node: Menus8255
+Node: Shortcuts9777
+Node: GNU Free Documentation License10783
+Node: Index33262
 
 End Tag Table
 
