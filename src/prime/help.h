@@ -1,23 +1,28 @@
 /* 
  *    Programmed By: Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
- *    Copyright 2024 (c)
+ *    Copyright 2013, 2014, 2015, 2016, 2017, 2018, 2024 (c)
  * 
- *    file: kbd.h
- *    This file is part of the GnuDOS project.
+ *    file: help.h
  *
- *    GnuDOS is free software: you can redistribute it and/or modify
+ *    Prime is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
  *    the Free Software Foundation, either version 3 of the License, or
  *    (at your option) any later version.
  *
- *    GnuDOS is distributed in the hope that it will be useful,
+ *    Prime is distributed in the hope that it will be useful,
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *    GNU General Public License for more details.
  *
  *    You should have received a copy of the GNU General Public License
- *    along with GnuDOS.  If not, see <http://www.gnu.org/licenses/>.
+ *    along with Prime.  If not, see <http://www.gnu.org/licenses/>.
  */    
+#ifndef __HELP_H
+#define __HELP_H
 
-#include "../corelib/kbd.h"
+void showReadMe(void);
+void showKeybindings(void);
+void showQuickReference(void);
+void showAboutBox(void);
 
+#endif

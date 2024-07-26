@@ -2,7 +2,7 @@
  *    Programmed By: Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
  *    Copyright 2024 (c)
  * 
- *    file: kbd.h
+ *    file: dialogs.h
  *    This file is part of the GnuDOS project.
  *
  *    GnuDOS is free software: you can redistribute it and/or modify
@@ -19,5 +19,5 @@
  *    along with GnuDOS.  If not, see <http://www.gnu.org/licenses/>.
  */    
 
-#include "../corelib/kbd.h"
+#include "../corelib/dialogs.h"
 
