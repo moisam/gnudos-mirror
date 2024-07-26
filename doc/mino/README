@@ -1,1 +1,196 @@
+# 
+#    Copyright 2013, 2014 2015, 2016, 2017, 2018, 2024 (c)
+#    Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
+# 
+#    file: README
+#    This file is part of GnuDOS.
+#
+#    GnuDOS is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GnuDOS is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GnuDOS.  If not, see <http://www.gnu.org/licenses/>.
+#    
 
+What is mino?
+=============
+Mino is a GNU software, part of the GnuDOS package.
+Mino is a text file editor for use with the GNU/Linux console/graphical 
+terminals. The idea is to provide a text editor that is user friendly and 
+easy to use for those who came from a DOS background. Having accustomed to 
+SHIFT selecting text, using CTRL-shortcut keys and so on makes it hard for 
+the regular Joe to dive in head-first into GNU syntax. Mino provides a 
+multi-level experience, the level of complexity can be adjusted by the user: 
+you want to use DOS-keys with a few basic GNU ones? you want to go with the 
+full power of the GNU system? All are options that are provided by the six 
+levels of experience of Mino:
+
+  1- Newbie: All DOS shortcut keys, no GNU keys yet
+  2- Novice: DOS shortcut keys, some of which are replaced with GNU's
+  3- Intermediate: DOS keys with a few more replaced with GNU keys
+  4- ِAdvanced: ... And more GNU keys in
+  5- ِExpert: Very few DOS keys, most are GNU keys
+  6- ِVeteran: Only GNU keys, no DOS-like keys
+  
+You start with level 1 by default.
+
+To set your level, call mino with the '--level X' or '-l X' option,
+Where X is the level desired, for example:
+
+$ mino --level 2
+
+Which keys are defined for which level?
+=======================================
+Below is a table showing the DOS-like key combinations along with their 
+respective GNU key bindings. To the right is the level at which a certain GNU
+key is defined. Each key defined is recognized in higher levels (e.g. level 2
+keys are recognized in levels 3-4-5-6). Note that in level 6 only GNU keys are
+defined, no DOS keys will work at this level!.
+
+Keybindings:
+============
+In the table below, C-something means pressing down CTRL and then pressing the
+other key. Note that '^' is the same as 'C', meaning CTRL key, it is just
+typed like this so DOS users can feel familiar with the text.
+The same as M-something, which means META or ALT.
+
+=====================================================================
+Function        DOS-like key    GNU key                 GnuDOS Level
+=====================================================================
+All DOS bindings and no GNU bindings			Newbie
+
+Next Line       Down            C-n                     Novice
+Prev. Line      Up              C-p                     Novice
+Backward        Left            C-b                     Novice
+Forward         Right           C-f                     Novice
+Back One Word   ^Left           M-b                     Intermediate
+Fwd One Word    ^Right          M-f                     Intermediate
+
+Cancel          ESC             C-g                     Intermediate
+Next Screen     PgDn            C-v                     Intermediate
+Prev. Screen    PgUp            M-v                     Intermediate
+Start of Line   Home            C-a                     Intermediate
+End of Line     End             C-e                     Intermediate
+Start of text   ^Home           C-<                     Intermediate
+End of text     ^End            C->                     Intermediate
+
+Del prev char   BkSpc           DEL (is BkSpc)          Advanced
+Del next char   Delete          C-d                     Advanced
+Del prev word   ^BkSpc          M-DEL (is M-BkSpc)      Advanced
+Del next word   ^Delete         M-d                     Advanced
+Select text     SHIFT+Arrow     C-Space                 Advanced
+Cut (kill)      BkSpc/Del       C-w                     Advanced
+
+Quit            ^Q              C-x C-c                 Expert
+Paste (yanking) ^V              C-y                     Expert
+Del Line        ^D              C-k                     Expert
+Undo            ^Z              C-/, C-_, C-x u         Expert
+Open File       ^O              C-x C-f                 Expert
+Save File       ^S              C-x C-s                 Expert
+Find (Search)   ^F              C-s (forward search)    Expert
+                                C-r (reverse search)    Expert
+Help            F1              C-h ?                   Expert
+
+All GNU bindings and no DOS bindings                    Veteran
+=====================================================================
+
+Why should I use it?
+====================
+If you would like to become accustomed to the default and commonly used GNU 
+system key bindings, it would be very helpful to try and use a step-by-step
+approach into learning how to use the GNU system effectively.
+
+How to run it?
+==============
+After installing the package, simply type:
+
+$ mino
+
+on your console (or graphical terminal) and it will run. If you want to load 
+a file into mino:
+
+$ mino file-name
+
+To reset the configuration file to it's defaults:
+
+$ mino --reset-config
+
+To show command line help:
+
+$ mino [--help|-h]
+
+And that's it!
+
+Moving around with Shortcut Keys:
+=================================
+ALT+F: Open File menu
+ALT+E: Open Edit menu
+ALT+O: Open Options menu
+ALT+H: Open Help menu
+
+(1) File menu shortcuts:
+CTRL+O: Open file
+CTRL+S: Save file
+CTRL+P: Print file (currently under development)
+CTRL+Q: Exit program
+
+(2) Edit menu shortcuts:
+CTRL+X: Cut selection
+CTRL+C: Copy selection
+CTRL+V: Paste selection
+CTRL+F: Find
+CTRL+R: Find & Replace
+CTRL+A: Select All
+CTRL+Z: Undo
+CTRL+Y: Redo
+CTRL+D: Delete Line (selected line)
+CTRL+E: Toggle select mode (under X, see below)
+
+How does mino remember my preferences?
+======================================
+Mino stores its configuration in a file named '.mino.conf' under your home
+directory. You can edit it by hand (or using mino!), but this is not advisable.
+Use the Options menu under mino to change your preferences and mino will save
+them into the config file.
+
+What about sentence highlighting?
+=================================
+Currently mino recognizes the following file types:
+
+  C/C++ Source and header files
+  Perl scripts
+  Shell scripts
+  Python scripts
+  HTML files
+  JavaScript files
+  QBasic source files
+  x86 Assembly listings
+  Fortran 77 v4.0 files
+  Texi files
+
+Whenever you open a file of these types, mino will automatically adjust the
+colors of the view so that the language keywords, library functions, and
+operators (like +-*/ and so on) are highlighted each in a different
+color, on a black background, to ease writing your programs.
+
+What else?
+==========
+There is one catch: when running under the console, some key combinations are 
+not recognised (e.g. CTRL+arrow-keys). This is because starting with version 2.0,
+the GnuDOS library uses ncurses to get keyboard input and some keys, especially
+modifier keys, are not captured. This means, for example, you might not be able
+to hold down SHIFT and use the arrow keys to select text. The solution is
+using CTRL+E, which activates the Select mode. Enter the Select mode, use the
+arrow keys to size your selection, do whatever you want with it, and exit the
+Select mode.
+
+Please send me your feedback and comments on [mohammed_isam1984@yahoo.com]
+
+Thank you for using this software.
