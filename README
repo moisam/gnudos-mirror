@@ -1,0 +1,164 @@
+# 
+#    Copyright 2015, 2016, 2017, 2018, 2024 (c) Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
+# 
+#    file: README
+#    This file is part of GnuDOS.
+#
+#    GnuDOS is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GnuDOS is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GnuDOS.  If not, see <http://www.gnu.org/licenses/>.
+#    
+
+About the GnuDOS library
+=========================
+
+GnuDOS package is a GNU software. It is a library designed to help new users
+of the GNU system, who are coming from a DOS background, fit into the picture
+and start using the GNU system with ease. It also addresses the console
+programmers of such programs that have the look and feel of the old DOS system.
+The library is composed of core utilities and software applications:
+
+* The core library (corelib) contains four utilities: Kbd (for keyboard 
+handling), UKbd (includes unicode support), Screen (for screen drawing), 
+and Dialogs (for dialog boxes/window drawing).
+
+* The utility applications are: Prime (console file manager), and Mino
+(console text editor).
+
+
+The rationale behind the GnuDOS corelib library
+================================================
+
+So, you like programming under the GNU/Linux console, right?. And you came
+from the DOS land where every thing was white/blue or yellow/black. You 
+want to make users coming from the DOS land feel home when switching to the
+powerful GNU system. Okay, That's good. But there are some catches when 
+programming under the console. First of all, you can't format your output 
+exactly the way you want in terms of color, positioning, and so on. You can 
+go deep and use terminal escape sequences (as most GNU/Linux consoles emulate
+the VT100 terminal or similar), but who can remember these?.
+
+Next comes the problem of the terminal driver interfering with keyboard 
+input. You don't get the real key scancodes sent by the keyboard. The driver 
+gets in the way and performs a lot of steps to map the right key to the right 
+keycode, process some special key combinations (like CTRL+ALT+DEL) and so on, 
+before passing the result to the terminal. And in the case of GUIs, the
+terminal does more processing before sending the final result to your program. 
+You say what difference does it make? you are taking all the pain off my head,
+why should I bother? Here is why:
+
+If you want your program to be REALLY interactive, like waiting the user to 
+press a key (press, not press and release and press ENTER!) you can't rely on 
+the good old getc() or getchar() functions, as they will return an input char 
+alright, but only after the user presses ENTER!. That's no good for us, you 
+know.
+Another thing is reading special keys, like SHIFT, ALT and CTRL. You don't get
+scancodes for these keys (not all times, at least).
+
+So how to make your program get over these problems? well, you can implement 
+your own keyboard driver, which will be very painful to construct your keymap 
+tables and do all the calculations, or you can interfere with the input sent 
+from the console driver before it does any further processing on it. The GnuDOS 
+Kbd utility does this. It used to get raw data from the console driver, but
+this turned out to be a nightmare when people tried to port this package to
+other systems. Starting with version 2.0, the Kbd utility relies on the
+ncurses library to get keyboard input.
+
+Right now, the Kbd utility doesn't recognize ALL the possible keys that can be
+entered through a keyboard. It recognizes all the alphanumeric charset, the 
+TAB, CAPS, ENTER, SPACE, DEL, INS, HOME, ESC, and END. Because of how ncurses
+handles input, Kbd cannot capture the individual modifier keys (CTRL, ALT,
+SHIFT), but key combinations (like ALT-key, SHIFT-key and CTRL-key) should
+work as expected for end user programs.
+
+The other thing the GnuDOS library provides is a utility for controlling the 
+Screen. It provides functions for getting the screen size (height and width), 
+setting the screen colors, and clearing the screen.
+
+The third utility is the Dialogs utility, which (as its name says) provides a 
+ready-to-use class of dialog boxes under the console. It provides two types of
+boxes: simple dialog box (to provide the user with a messeage, or asking for 
+confirmation, ...) and an input box (to ask the user to enter some input).
+
+This is a sample program hello_gnudos that demonstrates how to use the various
+elements and utilities of the GnuDOS corelib library.
+
+#include "console/dialogs.h"
+#include "console/screen.h"
+#include "console/kbd.h"
+
+int main(int argc, char *argv[]) 
+{
+	if(!initTerminal()) 
+	{
+		fprintf(stderr, "Error initializing keyboard. Aborting.\n");
+		exit(1);
+	}
+ 
+	//clear the screen
+	clearScreen();
+ 
+	//set screen colors
+	setScreenColors(FG_COLOR[COLOR_WINDOW], BG_COLOR[COLOR_WINDOW]);
+ 
+	//Get screen size, then draw a box with given coordinates, 
+	//title, and set clearing of box area
+	getScreenSize();
+    
+	msgBox("This was an example", OK, INFO);
+	drawBox(2, 2, SCREEN_H-2, SCREEN_W-2, " Example ", YES);
+	locate(3, 3); printf("Hello GnuDOS!");
+	locate(4, 3); printf("This is an example Window.");
+	locate(5, 3); printf("Press ENTER to exit...");
+
+	while(1) 
+	{
+		if(getKey() == ENTER_KEY) break;
+	}
+  
+	//very important to restore keyboard state to its
+	//previous state before exiting
+	restoreTerminal();
+	exit(0);
+}//end main
+
+
+Remember two things:
+(1) a call to initTerminal() must be invoked before using the library
+(2) a call to restoreTerminal() must be done before exiting the program
+
+If you forget point (2), you will leave the user's terminal in raw mode, which
+(under console) means he/she will not be able to do virtually anything (not 
+even switching terminal using CTRL+ALT+Fx). The only way out is a reboot!. 
+Under X it is less worse, usually the user will need to close the terminal or 
+kill the process. Still though, it is IMPERATIVE to call restoreTerminal() 
+before exiting your program!.
+
+Also note that including the header file "dialogs.h" automatically includes 
+both "screen.h" and "kbd.h" as the dialogs utility uses both of the other two.
+
+To run programs that rely on the GnuDOS library, only the library runtime 
+files are needed. On the other hand, to compile new programs that need the 
+library, you will need the header files.
+
+After installing proper packages, you should link your program against the 
+GnuDOS library:
+
+gcc -o myprog mysource.c -lgnudos
+
+More information on the library utilities can be found by running 'info gnudos'
+or 'man gnudos'.
+
+
+Please send me your feedback and comments on [mohammed_isam1984@yahoo.com]
+
+Thank you for using this software.

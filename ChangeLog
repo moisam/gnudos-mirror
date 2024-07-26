@@ -1,0 +1,114 @@
+* Fri Jul 19 2024 Mohammed Isam <mohammed_isam1984@yahoo.com> 2.0-1
+- Bugfixes
+- Reformatted the whole codebase and removed redundant code
+- The library depends on ncurses now for better portability
+- Renamed show_readme() to showReadme() to match codebase naming
+- Renamed show_about() to showAbout() to match codebase naming
+- showReadme() accepts a FILE handle now instead of a path
+- Removed catchAllSignals() and catchSignals()
+- Button types macros are now prefixed with BUTTON_ due to clashes
+  with some ncurses macros (e.g. OK is now BUTTON_OK)
+- Unicode support - corelib, prime and mino now use widechars internally
+  to support non-Latin letters
+
+* Sat May 12 2018 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.11-4
+- Bugfixes
+
+* Sat May 12 2018 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.11-3
+- Added missing copyright notice for ChangeLog file
+
+* Fri May 11 2018 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.11-2
+- Added THANKS file and fixed missing copyright notices
+
+* Thu Apr 5 2018 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.11-1
+- Bug fixes in mino (almost rewritten from scratch)
+- Bug fixes in prime
+
+* Fri Nov 18 2016 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.10-1
+- Bug fixes in mino
+
+* Wed Aug 03 2016 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.9-1
+- Bug fixes
+
+* Sun Dec 06 2015 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.8-5
+- Added show_about() and show_readme() functions
+- Bug fixes
+
+* Sat Oct 24 2015 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.8-4
+- More bug fixes!
+- Fixed mino's search and replace functions
+
+* Fri Dec 19 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.8-3
+- More bug fixes!
+
+* Fri Dec 19 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.8-2
+- Debugging and fixing of memory checking
+
+* Sat Dec 13 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.8-1
+- Configured prime to copy file mode when copying files/dirs
+- Added more key definitions to kbd
+- Fixed bugs in prime and mino
+
+* Mon Aug 25 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.7-1
+- Modified prime and mino to parse commandline arguments through getopt_long()
+- Added the Options menu to prime
+- Removed version from the shared library
+
+* Tue Aug 19 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.6-1
+- Working on auto indentation in mino
+- Included HTML, JavaScript, Basic, Pascal & Fortran syntax highlighting 
+  in mino
+- Modified mino source files
+
+* Sun Aug 03 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.5-1
+- Updated and modified Fog
+- Made a separate info file for Fog (was included in gnudos info file)
+- Included Texi, Assembly & Python syntax highlighting in mino
+- Colorized prime's view
+
+* Tue Jul 29 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.4-1
+- Added the keybindings file to the package
+- Modified mino & prime source files to include keybindings in help menu
+- Updated mino & prime to version 1.1
+
+* Sat Jul 12 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.3-1
+- Modified Manfiles for manpages and src dirs
+
+* Fri Jul 11 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.2-3
+- Modified the Mino and Prime texi files, including the manual
+
+* Thu May 29 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.2-2
+- Modified info, man, readme, and manual files for gnudos corelib
+  and the fog utility
+
+* Tue May 20 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.2-1
+- Added ukbd utility for unicode handling
+- Added uputchar() to the dialogs utility
+- Updated the fog utility program
+
+* Fri Apr 18 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.1-1
+- Modified source files to point for documentation under doc/gnudos
+
+* Fri Apr 11 2014 Mohammed Isam <mohammed_isam1984@yahoo.com> 1.0-1
+- First release
+
+# 
+#    Copyright 2013, 2014 2015, 2016, 2017, 2018, 2024 (c)
+#    Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
+# 
+#    file: ChangeLog
+#    This file is part of GnuDOS.
+#
+#    GnuDOS is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GnuDOS is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GnuDOS.  If not, see <http://www.gnu.org/licenses/>.
+#    
