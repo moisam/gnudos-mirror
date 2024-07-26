@@ -1,1 +1,163 @@
+# 
+#    Copyright 2013, 2014 2015, 2016, 2017, 2018, 2024 (c)
+#    Mohammed Isam Mohammed [mohammed_isam1984@yahoo.com]
+# 
+#    file: README
+#    This file is part of GnuDOS.
+#
+#    GnuDOS is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    GnuDOS is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with GnuDOS.  If not, see <http://www.gnu.org/licenses/>.
+#    
 
+What is Prime?
+==============
+Prime is a GNU software, part of the GnuDOS package.
+Prime is a file manager which works under the GNU/Linux console and graphical
+terminals. It is influenced by other file managers (like the well known XTree 
+Gold which was popular under MS-DOS). It provides a user friendly interface 
+with menus, shortcuts, and key navigation. It is distributed as part of the 
+GnuDOS package, which was developed to help users coming from DOS-like 
+environments feel ease when dealing with the GNU system.
+
+Prime provides a multi-level experience, the level of complexity can be 
+adjusted by the user: you want to use DOS-keys with a few basic GNU ones? 
+you want to go with the full power of the GNU system? All are options that 
+are provided by the six levels of experience of Prime:
+
+  1- Newbie: All DOS shortcut keys, no GNU keys yet
+  2- Novice: DOS shortcut keys, some of which are replaced with GNU's
+  3- Intermediate: DOS keys with a few more replaced with GNU keys
+  4- ِAdvanced: ... And more GNU keys in
+  5- ِExpert: Very few DOS keys, most are GNU keys
+  6- ِVeteran: Only GNU keys, no DOS-like keys
+  
+You start with level 1 by default.
+
+To set your level, call prime with the '--level X' or '-l X' option,
+Where X is the level desired, for example:
+
+$ prime --level 2
+
+Which keys are defined for which level?
+=======================================
+Below is a table showing the DOS-like key combinations along with their 
+respective GNU key bindings. To the right is the level at which a certain
+key is defined. Each key defined is recognized in higher levels (e.g. level 2
+keys are recognized in levels 3-4-5-6). Note that in level 6 only GNU keys are
+defined, no DOS keys will work at this level!.
+
+Keybindings:
+============
+In the table below, C-something means pressing down CTRL and then pressing the
+other key. Note that '^' is the same as 'C', meaning CTRL key, it is just
+typed like this so DOS users can feel familiar with the text.
+The same as M-something, which means META or ALT.
+
+=====================================================================
+Function        DOS-like key    GNU key                 GnuDOS Level
+=====================================================================
+All DOS bindings and no GNU bindings			Newbie
+
+Next Line       Down            C-n                     Novice
+Prev. Line      Up              C-p                     Novice
+Backward        Left            C-b                     Novice
+Forward         Right           C-f                     Novice
+Back One Word   ^Left           M-b                     Novice
+Fwd One Word    ^Right          M-f                     Novice
+
+Cancel          ESC             C-g                     Intermediate
+Next Screen     PgDn            C-v                     Intermediate
+Prev. Screen    PgUp            M-v                     Intermediate
+Start of Line   Home            C-a                     Intermediate
+End of Line     End             C-e                     Intermediate
+Start of text   ^Home           C-<                     Intermediate
+End of text     ^End            C->                     Intermediate
+
+Del prev char   BkSpc           DEL (is BkSpc)          Advanced
+Del next char   Delete          C-d                     Advanced
+Del prev word   ^BkSpc          M-DEL (is M-BkSpc)      Advanced
+Del next word   ^Delete         M-d                     Advanced
+Select text     SHIFT+Arrow     C-Space                 Advanced
+Cut (kill)      BkSpc/Del       C-w                     Advanced
+
+Quit            ^Q              C-x C-c                 Expert
+Paste (yanking) ^V              C-y                     Expert
+Del Line        ^D              C-k                     Expert
+Undo            ^Z              C-/, C-_, C-x u         Expert
+Open File       ^O              C-x C-f                 Expert
+Save File       ^S              C-x C-s                 Expert
+Find (Search)   ^F              C-s (forward search)    Expert
+                                C-r (reverse search)    Expert
+Help            F1              C-h ?                   Expert
+
+All GNU bindings and no DOS bindings                    Veteran
+=====================================================================
+
+
+Why should I use it?
+====================
+If you like using the console (like most GNU/Linux vintage users do), and
+you came from a DOS background, having a nice and easy way to run through your 
+directory trees and moving files around will be an important asset in your
+toolset, plus you will easily dive into the GNU system key bindings.
+
+What do I need?
+===============
+The program can be invoked from the linux console or under X11 from a terminal.
+
+How to use it?
+==============
+Simply invoke the 'prime' executable from the shell:
+
+$ prime
+
+The main window has three parts:
+(1) Directory view (left side): you can navigate the directory tree here
+(2) File view (right side): navigate/select files in the current directory
+(3) Bottom view: shows the current working directory and the selected items
+
+Keys:
+=====
+Space bar: toggle selection. Selected items are marked "*"
+CTRL+X: Cut selection (if no selection, cut current item). Cut items marked "^"
+CTRL+C: Copy selection (if no selection, copy current item). Copy items marked "C"
+CTRL+V: Paste cut/copy items in the current directory
+CTRL+O: Open path
+CTRL+P: Print current directory tree
+CTRL+Q: Exit program
+CTRL+F: Find a file
+ALT+F: Open File menu
+ALT+E: Open Edit menu
+ALT+H: Open Help menu
+
+What else?
+==========
+You can export the directory tree of a given directory to a given file without 
+starting Prime by typing:
+
+$ prime -e|--export dirname filename
+
+Note you will only type '-e' or '--export', not both.
+
+Prime starts automatically with the directory tree of the current working 
+directory. To change that, type
+
+$ prime -d|--dir dirname
+
+And Prime will load the directory tree of 'dirname' and start. If it fails 
+(e.g. the directory does not exist), Prime will start with the current working
+directory tree as usual.
+
+Please send me your feedback and comments on [mohammed_isam1984@yahoo.com]
+
+Thank you for using this software.
