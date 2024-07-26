@@ -1,0 +1,42 @@
+This is an introduction to the GnuDOS group of utilities, which is a library
+developed to help users coming from DOS land start using the GNU system.
+
+Keybindings:
+
+Function        DOS-like key    GNU key                 GnuDOS Level
+
+All DOS bindings and no GNU bindings                    Newbie        1
+
+Next Line       Down            C-n                     Novice        2
+Prev. Line      Up              C-p                     Novice
+Backward        Left            C-b                     Novice
+Forward         Right           C-f                     Novice
+Back One Word   ^Left           M-b                     Novice
+Fwd One Word    ^Right          M-f                     Novice
+
+Cancel          ESC             C-g                     Intermediate  3
+Next Screen     PgDn            C-v                     Intermediate
+Prev. Screen    PgUp            M-v                     Intermediate
+Start of Line   Home            C-a                     Intermediate
+End of Line     End             C-e                     Intermediate
+Start of text   ^Home           C-<                     Intermediate
+End of text     ^End            C->                     Intermediate
+
+Del prev char   BkSpc           DEL (is BkSpc)          Advanced      4
+Del next char   Delete          C-d                     Advanced
+Del prev word   ^BkSpc          M-DEL (is M-BkSpc)      Advanced
+Del next word   ^Delete         M-d                     Advanced
+Select text     SHIFT+Arrow     C-Space                 Advanced
+Del selection   BkSpc/Del       C-w                     Advanced
+
+Quit            ^Q              C-x C-c                 Expert        5
+Paste (yanking) ^V              C-y                     Expert
+Del Line        ^D              C-k                     Expert
+Undo            ^Z              C-/, C-_, C-x u         Expert
+Open File       ^O              C-x C-f                 Expert
+Save File       ^S              C-x C-s                 Expert
+Find (Search)   ^F              C-s (forward search)    Expert
+                                C-r (reverse search)    Expert
+Help            F1              C-h ?                   Expert
+
+All GNU bindings and no DOS bindings                    Veteran       6
