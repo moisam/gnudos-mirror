@@ -1,0 +1,70 @@
+.\" Manpage for Prime.
+.\" Contact mohammed_isam1984@yahoo.com for feedback/corrections.
+.TH Prime 1 "JULY 2024" "2.1" "Prime man page"
+.SH NAME
+Prime \- a file manager for GNU/Linux console/graphical terminals
+.SH SYNOPSIS
+.B Prime [OPTIONS]
+.SH DESCRIPTION
+Prime is a GNU software, part of the GnuDOS package.
+Prime is a file manager which works under the GNU/Linux console/graphical 
+terminals. It was influenced by other file managers (like the well known 
+XTree Gold, which was popular under MS-DOS). It provides a user friendly 
+interface with menus, shortcuts, and key navigation. It is distributed as 
+part of the GnuDOS package, which was developed to help users coming from 
+DOS-like environments feel ease when dealing with the GNU system.
+.br
+Prime provides a multi-level experience, the level of complexity can be adjusted
+by the user: you want to use DOS-keys with a few basic GNU ones? you want to 
+go with the full power of the GNU system? All are options that are provided by
+the six levels of experience of Prime:
+
+  1- Newbie: All DOS shortcut keys, no GNU keys yet
+  2- Novice: DOS shortcut keys, some of which are replaced with GNU's
+  3- Intermediate: DOS keys with a few more replaced with GNU keys
+  4- ِAdvanced: ... And more GNU keys in
+  5- ِExpert: Very few DOS keys, most are GNU keys
+  6- ِVeteran: Only GNU keys, no DOS-like keys
+  
+You start with level 1 by default.
+To set your level, call prime with the '--levelX' or '-lX' option.
+
+Which keys are defined for which level?
+.br
+=======================================
+.br
+There is a table showing the DOS-like key combinations along with their 
+respective GNU key bindings in the README file installed with this package.
+To read more about the levels of experience and the keybindings, please refer 
+to the README file under prime's help menu.
+
+.SH OPTIONS
+.IP "--export, -e dirname filename"
+Export the directory tree of 'dirname' into the text file named 'filename' without 
+starting the file manager
+
+.IP "--level X, -l X"
+The GNU DOS experience level to be used. Can be 1-6, defaults to 1. See the above
+text for details
+
+.IP "--reset-config, -r"
+Reset the configuration file to its defaults
+
+.IP "--help, -h"
+Print command line help, including short instructions on the command line 
+options, without starting the program
+
+.IP "--version, -v"
+Show program version
+
+.IP dirname
+Load the directory tree of 'dirname' into Prime on startup
+
+.SH TODO
+- Add mouse support
+.br
+- Add printing functionality
+.SH SEE ALSO
+info prime, info gnudos
+.SH AUTHOR
+Mohammed Isam <mohammed_isam1984@yahoo.com>

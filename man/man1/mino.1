@@ -1,1 +1,66 @@
+.\" Manpage for mino.
+.\" Contact mohammed_isam1984@yahoo.com for feedback/corrections.
+.TH mino 1 "JULY 2024" "2.1" "mino man page"
+.SH NAME
+Mino \- a user friendly text editor for GNU/Linux console/graphical terminals
+.SH SYNOPSIS
+.B mino [file-name] [--help, -h] [--reset-config]
+.SH DESCRIPTION
+Mino is a GNU software, part of the GnuDOS package.
+Mino is a text file editor for use with the GNU/Linux console/graphical 
+terminals. The idea is to provide a text editor that is user friendly and 
+easy to use for those who came from a DOS background. Having accustomed 
+to SHIFT selecting text, using CTRL-shortcut keys and so on makes it hard 
+for a regular Joe to dive in head-first into GNU syntax.
+.br
+Mino provides a multi-level experience, the level of complexity can be 
+adjusted by the user: you want to use DOS-keys with a few basic GNU ones? 
+you want to go with the full power of the GNU system? All are options that 
+are provided by the six levels of experience of Mino:
 
+  1- Newbie: All DOS shortcut keys, no GNU keys yet
+  2- Novice: DOS shortcut keys, some of which are replaced with GNU's
+  3- Intermediate: DOS keys with a few more replaced with GNU keys
+  4- ِAdvanced: ... And more GNU keys in
+  5- ِExpert: Very few DOS keys, most are GNU keys
+  6- ِVeteran: Only GNU keys, no DOS-like keys
+  
+You start with level 1 by default.
+To set your level, call mino with the '--levelX' or '-lX' option.
+
+Which keys are defined for which level?
+.br
+=======================================
+.br
+There is a table showing the DOS-like key combinations, along with their 
+respective GNU key bindings, in the README file installed with this package.
+To read more about the levels of experience and the keybindings, please refer 
+to the README file, accessible from the Help menu in mino.
+
+.SH OPTIONS
+.IP --reset-config
+To reset the configuration file
+.IP "--help, -h"
+Print command line help, including short instructions on the command line 
+options, without starting the program
+.IP "--version, -v"
+Show program version
+.IP "--levelX, -lX"
+Set the level of experience, where X is a number in the range 1 to 6
+.IP file-name
+If you want to load a file into mino on program startup
+.SH FILES
+.I ~/.mino.conf
+The default file used to store mino's configuration. It can be edited 
+manually, but this is not advisable. Use mino Options menu to change your 
+preferences
+.SH TODO
+- Add mouse support
+.br
+- Add printing functionality
+.br
+- Add more syntax highlighting options
+.SH SEE ALSO
+info mino, info gnudos
+.SH AUTHOR
+Mohammed Isam <mohammed_isam1984@yahoo.com>
