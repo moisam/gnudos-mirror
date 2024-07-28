@@ -21,7 +21,7 @@
 
 #AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = -I m4
-LIB_VERSION=1:9:0
+LIB_VERSION=2:0:0
 lib_LTLIBRARIES = libgnudos.la
 libgnudos_la_SOURCES = kbd.c ukbd.c screen.c dialogs.c
 library_includedir = $(includedir)/console
