@@ -114,7 +114,6 @@ void calcUserVisibleCurLine(void)
 
 static void gotoNextWord(int pos, int startAt)
 {
-    int i;
     wchar_t *s = lines[pos]->text+startAt;
     selectedChar = startAt;
     while(isWhitespace(*s)) s++, selectedChar++;
@@ -378,7 +377,6 @@ static inline void do_right(void)
 
     if(WRAP_LINES)
     {
-        int oldChar = selectedChar;
         int len = lines[pos]->charCount;
 
         if(len && lines[pos]->text[len-1] == L'\n') len--;
@@ -664,7 +662,6 @@ int main(int argc, char **argv)
     move(2, 1);
     refresh();
  
-    int char_inserted = 0;
     char *ch;
 
     while(!end) 
@@ -681,67 +678,56 @@ int main(int argc, char **argv)
 
             case(INS_KEY):
                 INSERT        = !INSERT;
-                char_inserted = 0;
                 refreshBottomView();
                 break;
 
             case(CAPS_KEY):
                 CAPS          = !CAPS;
-                char_inserted = 0;
                 refreshBottomView();
                 break;
 
             case(PGUP_KEY):
                 if(GNU_DOS_LEVEL > 2) break;
-                char_inserted = 0;
                 do_pg_up();
                 break;
 
             case(PGDOWN_KEY):
                 if(GNU_DOS_LEVEL > 2) break;
-                char_inserted = 0;
                 do_pg_down();
                 break;
 
             case(HOME_KEY):
                 if(GNU_DOS_LEVEL > 2) break;
-                char_inserted = 0;
                 do_home(ch);
                 break;
 
             case(END_KEY):
                 if(GNU_DOS_LEVEL > 2) break;
-                char_inserted = 0;
                 do_end(ch);
                 break;
 
             case(RIGHT_KEY):
                 if(GNU_DOS_LEVEL > 1) break;
-                char_inserted = 0;
                 do_right();
                 break;
 
             case(LEFT_KEY):
                 if(GNU_DOS_LEVEL > 1) break;
-                char_inserted = 0;
                 do_left();
                 break;
 
             case(UP_KEY):
                 if(GNU_DOS_LEVEL > 1) break;
-                char_inserted = 0;
                 do_up();
                 break;
 
             case(DOWN_KEY):
                 if(GNU_DOS_LEVEL > 1) break;
-                char_inserted = 0;
                 do_down();
                 break;
 
             case(BACKSPACE_KEY):
                 FILE_STATE    = MODIFIED;
-                char_inserted = 0;
 
                 if(SELECTING) remove_selected_text(1);
                 else 
@@ -753,13 +739,11 @@ int main(int argc, char **argv)
 
             case(DEL_KEY):
                 if(GNU_DOS_LEVEL > 3) break;
-                char_inserted = 0;
                 do_del();
                 break;
 
             case(ENTER_KEY):
                 FILE_STATE    = MODIFIED;
-                char_inserted = 1;
                 if(SELECTING) remove_selected_text(1);
                 insertEnter();
                 break;
@@ -767,7 +751,6 @@ int main(int argc, char **argv)
             case(TAB_KEY):
                 FILE_STATE    = MODIFIED;
                 if(SELECTING) remove_selected_text(1);
-                char_inserted = 1;
                 insertTab();
                 break;
 
@@ -779,7 +762,6 @@ int main(int argc, char **argv)
                     {
                         if(GNU_DOS_LEVEL > 1) //GNU key binding
                         {
-                            char_inserted = 0;
                             do_right();
                         }
                         else
@@ -810,7 +792,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 1) //GNU key binding
                         {
-                            char_inserted = 0;
                             do_left();
                         }
                     }
@@ -818,7 +799,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 2) //GNU key binding
                         {
-                            char_inserted = 0;
                             do_pg_up();
                         }
                     }
@@ -829,7 +809,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL < 4) break;
                         FILE_STATE    = MODIFIED;
-                        char_inserted = 0;
                         if(SELECTING) remove_selected_text(1);
                     }
                     else if(ch[0] == ' ') 
@@ -852,7 +831,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 2) //GNU key binding
                         {
-                            char_inserted = 0;
                             do_pg_down();
                         }
                         else editMenu_Paste();
@@ -873,7 +851,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 2) //GNU key binding
                         {
-                            char_inserted = 0;
                             do_home(ch);
                         }
                         else editMenu_SelectAll();
@@ -897,7 +874,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 1)
                         {
-                            char_inserted = 0;
                             do_right();
                         }
                         else editMenu_Find();
@@ -906,7 +882,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 2)
                         {
-                            char_inserted = 0;
                             do_end(ch);
                         }
                         else editMenu_ToggleSelectMode();
@@ -924,7 +899,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 1)
                         {
-                            char_inserted = 0;
                             do_down();
                         }
                         else new_file();
@@ -933,7 +907,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 1)
                         {
-                            char_inserted = 0;
                             do_up();
                         }
                         else fileMenu_Print(open_file_name); 
@@ -947,7 +920,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 3)
                         {
-                            char_inserted = 0;
                             do_del();
                         }
                         else deleteLine(); 
@@ -960,7 +932,6 @@ int main(int argc, char **argv)
                     { 
                         if(GNU_DOS_LEVEL > 1)
                         {
-                            char_inserted = 0;
                             do_left();
                         }
                     }
@@ -1025,7 +996,6 @@ int main(int argc, char **argv)
                     mbrtowc(&wch, ch, utf8_bytes, NULL);
                     insertChar(wch);
 
-                    char_inserted = 1;
                     break;
                 }//end if #1
                 break;
@@ -1074,11 +1044,6 @@ void deleteLine(void)
 static inline int findNextChar(int pos, int selChar)
 {
     return (lines[pos]->text[selChar] == L'\0') ? selChar : selChar+1;
-}
-
-static inline int findPrevChar(int pos, int selChar)
-{
-    return (selChar == 0) ? 0 : selChar-1;
 }
 
 void copyInLine(int pos, int to, int from, int calcTotalChars)
@@ -1244,9 +1209,6 @@ static void deleteNextWord(void)
 static void deletePrevWord(void)
 {
     int i, j, pos = firstVisLine+selectedLine;
-    int       oF  = firstVisLine;
-    int       oS  = selectedLine;
-    int       oC  = selectedChar;
 
     if(selectedChar <= 0)
     {
@@ -1292,7 +1254,7 @@ static void deletePrevWord(void)
 
 static void deleteNextChar(void) 
 {
-    int i, pos = firstVisLine+selectedLine;
+    int pos = firstVisLine+selectedLine;
     char deleteNL = 0;
     char refreshAll = 0;
     wchar_t c = lines[pos]->text[selectedChar];
@@ -1332,7 +1294,6 @@ static void deleteNextChar(void)
 static void deletePrevChar(void)
 {
     int i, pos;
-    int selChar;
     char refreshAll = 0;
     wchar_t c;
   
@@ -1768,7 +1729,7 @@ int isKeyword(int pos, int start, int *wordlen)
 
     for(i = 0; i < curmodule->keywordCount; i++)
     {
-        if(*wordlen != wcslen(curmodule->keywords[i])) continue;
+        if(*wordlen != (int)wcslen(curmodule->keywords[i])) continue;
         if(curmodule->caseSensitive) result = wcscmp(word, curmodule->keywords[i]);
         else result = wcscasecmp(word, curmodule->keywords[i]);
 

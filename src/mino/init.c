@@ -421,7 +421,7 @@ void init(char *open_file_name)
         return;
     }
 
-    config_file_name = malloc(strlen(pass->pw_dir)+11);
+    config_file_name = malloc(strlen(pass->pw_dir)+12);
     if(!config_file_name) outOfMemory();
     strcpy(config_file_name, pass->pw_dir);
     strcat(config_file_name, "/");

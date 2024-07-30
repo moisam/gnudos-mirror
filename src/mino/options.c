@@ -237,6 +237,7 @@ do_down:
 
                 case(ESC_KEY):
                     if(GNU_DOS_LEVEL > 2) break;
+                    return 0;
 
                 default:
                     return 0;
@@ -454,7 +455,7 @@ void optionsMenu_Reset_Config(void)
         return;
     }
 
-    config_file_name = malloc(strlen(pass->pw_dir)+11);
+    config_file_name = malloc(strlen(pass->pw_dir)+12);
 
     if(!config_file_name)
     {
@@ -509,7 +510,7 @@ void write_config_file(void)
         return;
     }
 
-    config_file_name = malloc(strlen(pass->pw_dir)+11);
+    config_file_name = malloc(strlen(pass->pw_dir)+12);
 
     if(!config_file_name)
     {

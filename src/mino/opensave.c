@@ -295,7 +295,7 @@ char *openSaveFile(OPEN_SAVE openSave, int showDialog, char *open_file_name)
     char *slash = NULL;
     char *name;
     char *cwd, *orig_cwd = getcwd(NULL, 0);
-    int i, iswcs;
+    int i /* , iswcs */;
     struct  passwd *pass;
   
     if(showDialog) 
@@ -304,7 +304,7 @@ char *openSaveFile(OPEN_SAVE openSave, int showDialog, char *open_file_name)
         if(files) { free(files); files = NULL; }
 
         totalDirs = 0; totalFiles = 0;
-        iswcs = 1;
+        //iswcs = 1;
 
         //try to open the document directory, if failed open home 
         // directory, if also failed, just open the current working 
@@ -842,7 +842,7 @@ openFileAndGo:
  * **************************************/
 static void refreshDirView(char *cwd)
 {
-    if(strlen(cwd) > w-y-5) 
+    if((int)strlen(cwd) > w-y-5) 
     {
         char *tmp;
         tmp = malloc(w-y+1);
@@ -952,7 +952,7 @@ static void refreshDirView(char *cwd)
  * *************************************************************/
 int _saveFile(char *open_file_name) 
 {
-    int i, j;
+    int i;
     char *tmp;
 
     if(!(open_file = fopen(open_file_name, "w+"))) 

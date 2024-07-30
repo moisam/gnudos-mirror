@@ -126,23 +126,34 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_mino_OBJECTS = main.$(OBJEXT) dialogs.$(OBJEXT) dir.$(OBJEXT) \
-	edit.$(OBJEXT) file.$(OBJEXT) help.$(OBJEXT) init.$(OBJEXT) \
-	kbd.$(OBJEXT) linestruct.$(OBJEXT) menu.$(OBJEXT) \
-	opensave.$(OBJEXT) options.$(OBJEXT) screen.$(OBJEXT) \
-	ukbd.$(OBJEXT) modules/modules.$(OBJEXT) \
-	modules/module_asm.$(OBJEXT) modules/module_bas.$(OBJEXT) \
-	modules/module_c.$(OBJEXT) modules/module_cpp.$(OBJEXT) \
-	modules/module_f77.$(OBJEXT) modules/module_html.$(OBJEXT) \
-	modules/module_js.$(OBJEXT) modules/module_pas.$(OBJEXT) \
-	modules/module_perl.$(OBJEXT) modules/module_py.$(OBJEXT) \
-	modules/module_sh.$(OBJEXT) modules/module_texi.$(OBJEXT)
+am_mino_OBJECTS = mino-main.$(OBJEXT) mino-dialogs.$(OBJEXT) \
+	mino-dir.$(OBJEXT) mino-edit.$(OBJEXT) mino-file.$(OBJEXT) \
+	mino-help.$(OBJEXT) mino-init.$(OBJEXT) mino-kbd.$(OBJEXT) \
+	mino-linestruct.$(OBJEXT) mino-menu.$(OBJEXT) \
+	mino-opensave.$(OBJEXT) mino-options.$(OBJEXT) \
+	mino-screen.$(OBJEXT) mino-ukbd.$(OBJEXT) \
+	modules/mino-modules.$(OBJEXT) \
+	modules/mino-module_asm.$(OBJEXT) \
+	modules/mino-module_bas.$(OBJEXT) \
+	modules/mino-module_c.$(OBJEXT) \
+	modules/mino-module_cpp.$(OBJEXT) \
+	modules/mino-module_f77.$(OBJEXT) \
+	modules/mino-module_html.$(OBJEXT) \
+	modules/mino-module_js.$(OBJEXT) \
+	modules/mino-module_pas.$(OBJEXT) \
+	modules/mino-module_perl.$(OBJEXT) \
+	modules/mino-module_py.$(OBJEXT) \
+	modules/mino-module_sh.$(OBJEXT) \
+	modules/mino-module_texi.$(OBJEXT)
 mino_OBJECTS = $(am_mino_OBJECTS)
 mino_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+mino_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(mino_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -158,21 +169,26 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/dialogs.Po ./$(DEPDIR)/dir.Po \
-	./$(DEPDIR)/edit.Po ./$(DEPDIR)/file.Po ./$(DEPDIR)/help.Po \
-	./$(DEPDIR)/init.Po ./$(DEPDIR)/kbd.Po \
-	./$(DEPDIR)/linestruct.Po ./$(DEPDIR)/main.Po \
-	./$(DEPDIR)/menu.Po ./$(DEPDIR)/opensave.Po \
-	./$(DEPDIR)/options.Po ./$(DEPDIR)/screen.Po \
-	./$(DEPDIR)/ukbd.Po modules/$(DEPDIR)/module_asm.Po \
-	modules/$(DEPDIR)/module_bas.Po modules/$(DEPDIR)/module_c.Po \
-	modules/$(DEPDIR)/module_cpp.Po \
-	modules/$(DEPDIR)/module_f77.Po \
-	modules/$(DEPDIR)/module_html.Po \
-	modules/$(DEPDIR)/module_js.Po modules/$(DEPDIR)/module_pas.Po \
-	modules/$(DEPDIR)/module_perl.Po \
-	modules/$(DEPDIR)/module_py.Po modules/$(DEPDIR)/module_sh.Po \
-	modules/$(DEPDIR)/module_texi.Po modules/$(DEPDIR)/modules.Po
+am__depfiles_remade = ./$(DEPDIR)/mino-dialogs.Po \
+	./$(DEPDIR)/mino-dir.Po ./$(DEPDIR)/mino-edit.Po \
+	./$(DEPDIR)/mino-file.Po ./$(DEPDIR)/mino-help.Po \
+	./$(DEPDIR)/mino-init.Po ./$(DEPDIR)/mino-kbd.Po \
+	./$(DEPDIR)/mino-linestruct.Po ./$(DEPDIR)/mino-main.Po \
+	./$(DEPDIR)/mino-menu.Po ./$(DEPDIR)/mino-opensave.Po \
+	./$(DEPDIR)/mino-options.Po ./$(DEPDIR)/mino-screen.Po \
+	./$(DEPDIR)/mino-ukbd.Po modules/$(DEPDIR)/mino-module_asm.Po \
+	modules/$(DEPDIR)/mino-module_bas.Po \
+	modules/$(DEPDIR)/mino-module_c.Po \
+	modules/$(DEPDIR)/mino-module_cpp.Po \
+	modules/$(DEPDIR)/mino-module_f77.Po \
+	modules/$(DEPDIR)/mino-module_html.Po \
+	modules/$(DEPDIR)/mino-module_js.Po \
+	modules/$(DEPDIR)/mino-module_pas.Po \
+	modules/$(DEPDIR)/mino-module_perl.Po \
+	modules/$(DEPDIR)/mino-module_py.Po \
+	modules/$(DEPDIR)/mino-module_sh.Po \
+	modules/$(DEPDIR)/mino-module_texi.Po \
+	modules/$(DEPDIR)/mino-modules.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -339,6 +355,7 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = -I m4
 mino_SOURCES = main.c defs.h dialogs.h edit.h file.h help.h kbd.h options.h screen.h ukbd.h dialogs.c dir.c edit.c file.c help.c init.c kbd.c linestruct.c menu.c opensave.c options.c screen.c ukbd.c modules/modules.c modules/modules.h modules/module_asm.c modules/module_bas.c modules/module_c.c modules/module_cpp.c modules/module_f77.c modules/module_html.c modules/module_js.c modules/module_pas.c modules/module_perl.c modules/module_py.c modules/module_sh.c modules/module_texi.c
+mino_CFLAGS = -Wall -Wextra -pedantic
 all: all-am
 
 .SUFFIXES:
@@ -427,36 +444,36 @@ modules/$(am__dirstamp):
 modules/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) modules/$(DEPDIR)
 	@: > modules/$(DEPDIR)/$(am__dirstamp)
-modules/modules.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-modules.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_asm.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_asm.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_bas.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_bas.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_c.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_c.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_cpp.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_cpp.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_f77.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_f77.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_html.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_html.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_js.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_js.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_pas.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_pas.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_perl.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_perl.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_py.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_py.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_sh.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_sh.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
-modules/module_texi.$(OBJEXT): modules/$(am__dirstamp) \
+modules/mino-module_texi.$(OBJEXT): modules/$(am__dirstamp) \
 	modules/$(DEPDIR)/$(am__dirstamp)
 
 mino$(EXEEXT): $(mino_OBJECTS) $(mino_DEPENDENCIES) $(EXTRA_mino_DEPENDENCIES) 
 	@rm -f mino$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(mino_OBJECTS) $(mino_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(mino_LINK) $(mino_OBJECTS) $(mino_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -465,33 +482,33 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dialogs.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dir.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/edit.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/file.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/help.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/init.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kbd.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/linestruct.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/menu.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/opensave.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/options.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/screen.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ukbd.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_asm.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_bas.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_c.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_cpp.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_f77.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_html.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_js.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_pas.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_perl.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_py.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_sh.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/module_texi.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/modules.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-dialogs.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-dir.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-edit.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-file.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-help.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-init.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-kbd.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-linestruct.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-main.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-menu.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-opensave.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-options.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-screen.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mino-ukbd.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_asm.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_bas.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_c.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_cpp.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_f77.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_html.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_js.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_pas.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_perl.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_py.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_sh.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-module_texi.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@modules/$(DEPDIR)/mino-modules.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -522,6 +539,384 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+
+mino-main.o: main.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-main.o -MD -MP -MF $(DEPDIR)/mino-main.Tpo -c -o mino-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-main.Tpo $(DEPDIR)/mino-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='main.c' object='mino-main.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c
+
+mino-main.obj: main.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-main.obj -MD -MP -MF $(DEPDIR)/mino-main.Tpo -c -o mino-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-main.Tpo $(DEPDIR)/mino-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='main.c' object='mino-main.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+
+mino-dialogs.o: dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-dialogs.o -MD -MP -MF $(DEPDIR)/mino-dialogs.Tpo -c -o mino-dialogs.o `test -f 'dialogs.c' || echo '$(srcdir)/'`dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-dialogs.Tpo $(DEPDIR)/mino-dialogs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dialogs.c' object='mino-dialogs.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-dialogs.o `test -f 'dialogs.c' || echo '$(srcdir)/'`dialogs.c
+
+mino-dialogs.obj: dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-dialogs.obj -MD -MP -MF $(DEPDIR)/mino-dialogs.Tpo -c -o mino-dialogs.obj `if test -f 'dialogs.c'; then $(CYGPATH_W) 'dialogs.c'; else $(CYGPATH_W) '$(srcdir)/dialogs.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-dialogs.Tpo $(DEPDIR)/mino-dialogs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dialogs.c' object='mino-dialogs.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-dialogs.obj `if test -f 'dialogs.c'; then $(CYGPATH_W) 'dialogs.c'; else $(CYGPATH_W) '$(srcdir)/dialogs.c'; fi`
+
+mino-dir.o: dir.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-dir.o -MD -MP -MF $(DEPDIR)/mino-dir.Tpo -c -o mino-dir.o `test -f 'dir.c' || echo '$(srcdir)/'`dir.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-dir.Tpo $(DEPDIR)/mino-dir.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dir.c' object='mino-dir.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-dir.o `test -f 'dir.c' || echo '$(srcdir)/'`dir.c
+
+mino-dir.obj: dir.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-dir.obj -MD -MP -MF $(DEPDIR)/mino-dir.Tpo -c -o mino-dir.obj `if test -f 'dir.c'; then $(CYGPATH_W) 'dir.c'; else $(CYGPATH_W) '$(srcdir)/dir.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-dir.Tpo $(DEPDIR)/mino-dir.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dir.c' object='mino-dir.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-dir.obj `if test -f 'dir.c'; then $(CYGPATH_W) 'dir.c'; else $(CYGPATH_W) '$(srcdir)/dir.c'; fi`
+
+mino-edit.o: edit.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-edit.o -MD -MP -MF $(DEPDIR)/mino-edit.Tpo -c -o mino-edit.o `test -f 'edit.c' || echo '$(srcdir)/'`edit.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-edit.Tpo $(DEPDIR)/mino-edit.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='edit.c' object='mino-edit.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-edit.o `test -f 'edit.c' || echo '$(srcdir)/'`edit.c
+
+mino-edit.obj: edit.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-edit.obj -MD -MP -MF $(DEPDIR)/mino-edit.Tpo -c -o mino-edit.obj `if test -f 'edit.c'; then $(CYGPATH_W) 'edit.c'; else $(CYGPATH_W) '$(srcdir)/edit.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-edit.Tpo $(DEPDIR)/mino-edit.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='edit.c' object='mino-edit.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-edit.obj `if test -f 'edit.c'; then $(CYGPATH_W) 'edit.c'; else $(CYGPATH_W) '$(srcdir)/edit.c'; fi`
+
+mino-file.o: file.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-file.o -MD -MP -MF $(DEPDIR)/mino-file.Tpo -c -o mino-file.o `test -f 'file.c' || echo '$(srcdir)/'`file.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-file.Tpo $(DEPDIR)/mino-file.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='file.c' object='mino-file.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-file.o `test -f 'file.c' || echo '$(srcdir)/'`file.c
+
+mino-file.obj: file.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-file.obj -MD -MP -MF $(DEPDIR)/mino-file.Tpo -c -o mino-file.obj `if test -f 'file.c'; then $(CYGPATH_W) 'file.c'; else $(CYGPATH_W) '$(srcdir)/file.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-file.Tpo $(DEPDIR)/mino-file.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='file.c' object='mino-file.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-file.obj `if test -f 'file.c'; then $(CYGPATH_W) 'file.c'; else $(CYGPATH_W) '$(srcdir)/file.c'; fi`
+
+mino-help.o: help.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-help.o -MD -MP -MF $(DEPDIR)/mino-help.Tpo -c -o mino-help.o `test -f 'help.c' || echo '$(srcdir)/'`help.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-help.Tpo $(DEPDIR)/mino-help.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='help.c' object='mino-help.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-help.o `test -f 'help.c' || echo '$(srcdir)/'`help.c
+
+mino-help.obj: help.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-help.obj -MD -MP -MF $(DEPDIR)/mino-help.Tpo -c -o mino-help.obj `if test -f 'help.c'; then $(CYGPATH_W) 'help.c'; else $(CYGPATH_W) '$(srcdir)/help.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-help.Tpo $(DEPDIR)/mino-help.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='help.c' object='mino-help.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-help.obj `if test -f 'help.c'; then $(CYGPATH_W) 'help.c'; else $(CYGPATH_W) '$(srcdir)/help.c'; fi`
+
+mino-init.o: init.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-init.o -MD -MP -MF $(DEPDIR)/mino-init.Tpo -c -o mino-init.o `test -f 'init.c' || echo '$(srcdir)/'`init.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-init.Tpo $(DEPDIR)/mino-init.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='init.c' object='mino-init.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-init.o `test -f 'init.c' || echo '$(srcdir)/'`init.c
+
+mino-init.obj: init.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-init.obj -MD -MP -MF $(DEPDIR)/mino-init.Tpo -c -o mino-init.obj `if test -f 'init.c'; then $(CYGPATH_W) 'init.c'; else $(CYGPATH_W) '$(srcdir)/init.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-init.Tpo $(DEPDIR)/mino-init.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='init.c' object='mino-init.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-init.obj `if test -f 'init.c'; then $(CYGPATH_W) 'init.c'; else $(CYGPATH_W) '$(srcdir)/init.c'; fi`
+
+mino-kbd.o: kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-kbd.o -MD -MP -MF $(DEPDIR)/mino-kbd.Tpo -c -o mino-kbd.o `test -f 'kbd.c' || echo '$(srcdir)/'`kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-kbd.Tpo $(DEPDIR)/mino-kbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kbd.c' object='mino-kbd.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-kbd.o `test -f 'kbd.c' || echo '$(srcdir)/'`kbd.c
+
+mino-kbd.obj: kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-kbd.obj -MD -MP -MF $(DEPDIR)/mino-kbd.Tpo -c -o mino-kbd.obj `if test -f 'kbd.c'; then $(CYGPATH_W) 'kbd.c'; else $(CYGPATH_W) '$(srcdir)/kbd.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-kbd.Tpo $(DEPDIR)/mino-kbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kbd.c' object='mino-kbd.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-kbd.obj `if test -f 'kbd.c'; then $(CYGPATH_W) 'kbd.c'; else $(CYGPATH_W) '$(srcdir)/kbd.c'; fi`
+
+mino-linestruct.o: linestruct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-linestruct.o -MD -MP -MF $(DEPDIR)/mino-linestruct.Tpo -c -o mino-linestruct.o `test -f 'linestruct.c' || echo '$(srcdir)/'`linestruct.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-linestruct.Tpo $(DEPDIR)/mino-linestruct.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='linestruct.c' object='mino-linestruct.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-linestruct.o `test -f 'linestruct.c' || echo '$(srcdir)/'`linestruct.c
+
+mino-linestruct.obj: linestruct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-linestruct.obj -MD -MP -MF $(DEPDIR)/mino-linestruct.Tpo -c -o mino-linestruct.obj `if test -f 'linestruct.c'; then $(CYGPATH_W) 'linestruct.c'; else $(CYGPATH_W) '$(srcdir)/linestruct.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-linestruct.Tpo $(DEPDIR)/mino-linestruct.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='linestruct.c' object='mino-linestruct.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-linestruct.obj `if test -f 'linestruct.c'; then $(CYGPATH_W) 'linestruct.c'; else $(CYGPATH_W) '$(srcdir)/linestruct.c'; fi`
+
+mino-menu.o: menu.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-menu.o -MD -MP -MF $(DEPDIR)/mino-menu.Tpo -c -o mino-menu.o `test -f 'menu.c' || echo '$(srcdir)/'`menu.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-menu.Tpo $(DEPDIR)/mino-menu.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='menu.c' object='mino-menu.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-menu.o `test -f 'menu.c' || echo '$(srcdir)/'`menu.c
+
+mino-menu.obj: menu.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-menu.obj -MD -MP -MF $(DEPDIR)/mino-menu.Tpo -c -o mino-menu.obj `if test -f 'menu.c'; then $(CYGPATH_W) 'menu.c'; else $(CYGPATH_W) '$(srcdir)/menu.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-menu.Tpo $(DEPDIR)/mino-menu.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='menu.c' object='mino-menu.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-menu.obj `if test -f 'menu.c'; then $(CYGPATH_W) 'menu.c'; else $(CYGPATH_W) '$(srcdir)/menu.c'; fi`
+
+mino-opensave.o: opensave.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-opensave.o -MD -MP -MF $(DEPDIR)/mino-opensave.Tpo -c -o mino-opensave.o `test -f 'opensave.c' || echo '$(srcdir)/'`opensave.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-opensave.Tpo $(DEPDIR)/mino-opensave.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='opensave.c' object='mino-opensave.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-opensave.o `test -f 'opensave.c' || echo '$(srcdir)/'`opensave.c
+
+mino-opensave.obj: opensave.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-opensave.obj -MD -MP -MF $(DEPDIR)/mino-opensave.Tpo -c -o mino-opensave.obj `if test -f 'opensave.c'; then $(CYGPATH_W) 'opensave.c'; else $(CYGPATH_W) '$(srcdir)/opensave.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-opensave.Tpo $(DEPDIR)/mino-opensave.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='opensave.c' object='mino-opensave.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-opensave.obj `if test -f 'opensave.c'; then $(CYGPATH_W) 'opensave.c'; else $(CYGPATH_W) '$(srcdir)/opensave.c'; fi`
+
+mino-options.o: options.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-options.o -MD -MP -MF $(DEPDIR)/mino-options.Tpo -c -o mino-options.o `test -f 'options.c' || echo '$(srcdir)/'`options.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-options.Tpo $(DEPDIR)/mino-options.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='options.c' object='mino-options.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-options.o `test -f 'options.c' || echo '$(srcdir)/'`options.c
+
+mino-options.obj: options.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-options.obj -MD -MP -MF $(DEPDIR)/mino-options.Tpo -c -o mino-options.obj `if test -f 'options.c'; then $(CYGPATH_W) 'options.c'; else $(CYGPATH_W) '$(srcdir)/options.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-options.Tpo $(DEPDIR)/mino-options.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='options.c' object='mino-options.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-options.obj `if test -f 'options.c'; then $(CYGPATH_W) 'options.c'; else $(CYGPATH_W) '$(srcdir)/options.c'; fi`
+
+mino-screen.o: screen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-screen.o -MD -MP -MF $(DEPDIR)/mino-screen.Tpo -c -o mino-screen.o `test -f 'screen.c' || echo '$(srcdir)/'`screen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-screen.Tpo $(DEPDIR)/mino-screen.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='screen.c' object='mino-screen.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-screen.o `test -f 'screen.c' || echo '$(srcdir)/'`screen.c
+
+mino-screen.obj: screen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-screen.obj -MD -MP -MF $(DEPDIR)/mino-screen.Tpo -c -o mino-screen.obj `if test -f 'screen.c'; then $(CYGPATH_W) 'screen.c'; else $(CYGPATH_W) '$(srcdir)/screen.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-screen.Tpo $(DEPDIR)/mino-screen.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='screen.c' object='mino-screen.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-screen.obj `if test -f 'screen.c'; then $(CYGPATH_W) 'screen.c'; else $(CYGPATH_W) '$(srcdir)/screen.c'; fi`
+
+mino-ukbd.o: ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-ukbd.o -MD -MP -MF $(DEPDIR)/mino-ukbd.Tpo -c -o mino-ukbd.o `test -f 'ukbd.c' || echo '$(srcdir)/'`ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-ukbd.Tpo $(DEPDIR)/mino-ukbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ukbd.c' object='mino-ukbd.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-ukbd.o `test -f 'ukbd.c' || echo '$(srcdir)/'`ukbd.c
+
+mino-ukbd.obj: ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT mino-ukbd.obj -MD -MP -MF $(DEPDIR)/mino-ukbd.Tpo -c -o mino-ukbd.obj `if test -f 'ukbd.c'; then $(CYGPATH_W) 'ukbd.c'; else $(CYGPATH_W) '$(srcdir)/ukbd.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/mino-ukbd.Tpo $(DEPDIR)/mino-ukbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ukbd.c' object='mino-ukbd.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o mino-ukbd.obj `if test -f 'ukbd.c'; then $(CYGPATH_W) 'ukbd.c'; else $(CYGPATH_W) '$(srcdir)/ukbd.c'; fi`
+
+modules/mino-modules.o: modules/modules.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-modules.o -MD -MP -MF modules/$(DEPDIR)/mino-modules.Tpo -c -o modules/mino-modules.o `test -f 'modules/modules.c' || echo '$(srcdir)/'`modules/modules.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-modules.Tpo modules/$(DEPDIR)/mino-modules.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/modules.c' object='modules/mino-modules.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-modules.o `test -f 'modules/modules.c' || echo '$(srcdir)/'`modules/modules.c
+
+modules/mino-modules.obj: modules/modules.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-modules.obj -MD -MP -MF modules/$(DEPDIR)/mino-modules.Tpo -c -o modules/mino-modules.obj `if test -f 'modules/modules.c'; then $(CYGPATH_W) 'modules/modules.c'; else $(CYGPATH_W) '$(srcdir)/modules/modules.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-modules.Tpo modules/$(DEPDIR)/mino-modules.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/modules.c' object='modules/mino-modules.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-modules.obj `if test -f 'modules/modules.c'; then $(CYGPATH_W) 'modules/modules.c'; else $(CYGPATH_W) '$(srcdir)/modules/modules.c'; fi`
+
+modules/mino-module_asm.o: modules/module_asm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_asm.o -MD -MP -MF modules/$(DEPDIR)/mino-module_asm.Tpo -c -o modules/mino-module_asm.o `test -f 'modules/module_asm.c' || echo '$(srcdir)/'`modules/module_asm.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_asm.Tpo modules/$(DEPDIR)/mino-module_asm.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_asm.c' object='modules/mino-module_asm.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_asm.o `test -f 'modules/module_asm.c' || echo '$(srcdir)/'`modules/module_asm.c
+
+modules/mino-module_asm.obj: modules/module_asm.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_asm.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_asm.Tpo -c -o modules/mino-module_asm.obj `if test -f 'modules/module_asm.c'; then $(CYGPATH_W) 'modules/module_asm.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_asm.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_asm.Tpo modules/$(DEPDIR)/mino-module_asm.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_asm.c' object='modules/mino-module_asm.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_asm.obj `if test -f 'modules/module_asm.c'; then $(CYGPATH_W) 'modules/module_asm.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_asm.c'; fi`
+
+modules/mino-module_bas.o: modules/module_bas.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_bas.o -MD -MP -MF modules/$(DEPDIR)/mino-module_bas.Tpo -c -o modules/mino-module_bas.o `test -f 'modules/module_bas.c' || echo '$(srcdir)/'`modules/module_bas.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_bas.Tpo modules/$(DEPDIR)/mino-module_bas.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_bas.c' object='modules/mino-module_bas.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_bas.o `test -f 'modules/module_bas.c' || echo '$(srcdir)/'`modules/module_bas.c
+
+modules/mino-module_bas.obj: modules/module_bas.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_bas.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_bas.Tpo -c -o modules/mino-module_bas.obj `if test -f 'modules/module_bas.c'; then $(CYGPATH_W) 'modules/module_bas.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_bas.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_bas.Tpo modules/$(DEPDIR)/mino-module_bas.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_bas.c' object='modules/mino-module_bas.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_bas.obj `if test -f 'modules/module_bas.c'; then $(CYGPATH_W) 'modules/module_bas.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_bas.c'; fi`
+
+modules/mino-module_c.o: modules/module_c.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_c.o -MD -MP -MF modules/$(DEPDIR)/mino-module_c.Tpo -c -o modules/mino-module_c.o `test -f 'modules/module_c.c' || echo '$(srcdir)/'`modules/module_c.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_c.Tpo modules/$(DEPDIR)/mino-module_c.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_c.c' object='modules/mino-module_c.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_c.o `test -f 'modules/module_c.c' || echo '$(srcdir)/'`modules/module_c.c
+
+modules/mino-module_c.obj: modules/module_c.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_c.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_c.Tpo -c -o modules/mino-module_c.obj `if test -f 'modules/module_c.c'; then $(CYGPATH_W) 'modules/module_c.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_c.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_c.Tpo modules/$(DEPDIR)/mino-module_c.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_c.c' object='modules/mino-module_c.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_c.obj `if test -f 'modules/module_c.c'; then $(CYGPATH_W) 'modules/module_c.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_c.c'; fi`
+
+modules/mino-module_cpp.o: modules/module_cpp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_cpp.o -MD -MP -MF modules/$(DEPDIR)/mino-module_cpp.Tpo -c -o modules/mino-module_cpp.o `test -f 'modules/module_cpp.c' || echo '$(srcdir)/'`modules/module_cpp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_cpp.Tpo modules/$(DEPDIR)/mino-module_cpp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_cpp.c' object='modules/mino-module_cpp.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_cpp.o `test -f 'modules/module_cpp.c' || echo '$(srcdir)/'`modules/module_cpp.c
+
+modules/mino-module_cpp.obj: modules/module_cpp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_cpp.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_cpp.Tpo -c -o modules/mino-module_cpp.obj `if test -f 'modules/module_cpp.c'; then $(CYGPATH_W) 'modules/module_cpp.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_cpp.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_cpp.Tpo modules/$(DEPDIR)/mino-module_cpp.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_cpp.c' object='modules/mino-module_cpp.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_cpp.obj `if test -f 'modules/module_cpp.c'; then $(CYGPATH_W) 'modules/module_cpp.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_cpp.c'; fi`
+
+modules/mino-module_f77.o: modules/module_f77.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_f77.o -MD -MP -MF modules/$(DEPDIR)/mino-module_f77.Tpo -c -o modules/mino-module_f77.o `test -f 'modules/module_f77.c' || echo '$(srcdir)/'`modules/module_f77.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_f77.Tpo modules/$(DEPDIR)/mino-module_f77.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_f77.c' object='modules/mino-module_f77.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_f77.o `test -f 'modules/module_f77.c' || echo '$(srcdir)/'`modules/module_f77.c
+
+modules/mino-module_f77.obj: modules/module_f77.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_f77.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_f77.Tpo -c -o modules/mino-module_f77.obj `if test -f 'modules/module_f77.c'; then $(CYGPATH_W) 'modules/module_f77.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_f77.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_f77.Tpo modules/$(DEPDIR)/mino-module_f77.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_f77.c' object='modules/mino-module_f77.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_f77.obj `if test -f 'modules/module_f77.c'; then $(CYGPATH_W) 'modules/module_f77.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_f77.c'; fi`
+
+modules/mino-module_html.o: modules/module_html.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_html.o -MD -MP -MF modules/$(DEPDIR)/mino-module_html.Tpo -c -o modules/mino-module_html.o `test -f 'modules/module_html.c' || echo '$(srcdir)/'`modules/module_html.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_html.Tpo modules/$(DEPDIR)/mino-module_html.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_html.c' object='modules/mino-module_html.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_html.o `test -f 'modules/module_html.c' || echo '$(srcdir)/'`modules/module_html.c
+
+modules/mino-module_html.obj: modules/module_html.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_html.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_html.Tpo -c -o modules/mino-module_html.obj `if test -f 'modules/module_html.c'; then $(CYGPATH_W) 'modules/module_html.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_html.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_html.Tpo modules/$(DEPDIR)/mino-module_html.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_html.c' object='modules/mino-module_html.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_html.obj `if test -f 'modules/module_html.c'; then $(CYGPATH_W) 'modules/module_html.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_html.c'; fi`
+
+modules/mino-module_js.o: modules/module_js.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_js.o -MD -MP -MF modules/$(DEPDIR)/mino-module_js.Tpo -c -o modules/mino-module_js.o `test -f 'modules/module_js.c' || echo '$(srcdir)/'`modules/module_js.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_js.Tpo modules/$(DEPDIR)/mino-module_js.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_js.c' object='modules/mino-module_js.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_js.o `test -f 'modules/module_js.c' || echo '$(srcdir)/'`modules/module_js.c
+
+modules/mino-module_js.obj: modules/module_js.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_js.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_js.Tpo -c -o modules/mino-module_js.obj `if test -f 'modules/module_js.c'; then $(CYGPATH_W) 'modules/module_js.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_js.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_js.Tpo modules/$(DEPDIR)/mino-module_js.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_js.c' object='modules/mino-module_js.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_js.obj `if test -f 'modules/module_js.c'; then $(CYGPATH_W) 'modules/module_js.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_js.c'; fi`
+
+modules/mino-module_pas.o: modules/module_pas.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_pas.o -MD -MP -MF modules/$(DEPDIR)/mino-module_pas.Tpo -c -o modules/mino-module_pas.o `test -f 'modules/module_pas.c' || echo '$(srcdir)/'`modules/module_pas.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_pas.Tpo modules/$(DEPDIR)/mino-module_pas.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_pas.c' object='modules/mino-module_pas.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_pas.o `test -f 'modules/module_pas.c' || echo '$(srcdir)/'`modules/module_pas.c
+
+modules/mino-module_pas.obj: modules/module_pas.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_pas.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_pas.Tpo -c -o modules/mino-module_pas.obj `if test -f 'modules/module_pas.c'; then $(CYGPATH_W) 'modules/module_pas.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_pas.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_pas.Tpo modules/$(DEPDIR)/mino-module_pas.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_pas.c' object='modules/mino-module_pas.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_pas.obj `if test -f 'modules/module_pas.c'; then $(CYGPATH_W) 'modules/module_pas.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_pas.c'; fi`
+
+modules/mino-module_perl.o: modules/module_perl.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_perl.o -MD -MP -MF modules/$(DEPDIR)/mino-module_perl.Tpo -c -o modules/mino-module_perl.o `test -f 'modules/module_perl.c' || echo '$(srcdir)/'`modules/module_perl.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_perl.Tpo modules/$(DEPDIR)/mino-module_perl.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_perl.c' object='modules/mino-module_perl.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_perl.o `test -f 'modules/module_perl.c' || echo '$(srcdir)/'`modules/module_perl.c
+
+modules/mino-module_perl.obj: modules/module_perl.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_perl.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_perl.Tpo -c -o modules/mino-module_perl.obj `if test -f 'modules/module_perl.c'; then $(CYGPATH_W) 'modules/module_perl.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_perl.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_perl.Tpo modules/$(DEPDIR)/mino-module_perl.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_perl.c' object='modules/mino-module_perl.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_perl.obj `if test -f 'modules/module_perl.c'; then $(CYGPATH_W) 'modules/module_perl.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_perl.c'; fi`
+
+modules/mino-module_py.o: modules/module_py.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_py.o -MD -MP -MF modules/$(DEPDIR)/mino-module_py.Tpo -c -o modules/mino-module_py.o `test -f 'modules/module_py.c' || echo '$(srcdir)/'`modules/module_py.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_py.Tpo modules/$(DEPDIR)/mino-module_py.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_py.c' object='modules/mino-module_py.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_py.o `test -f 'modules/module_py.c' || echo '$(srcdir)/'`modules/module_py.c
+
+modules/mino-module_py.obj: modules/module_py.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_py.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_py.Tpo -c -o modules/mino-module_py.obj `if test -f 'modules/module_py.c'; then $(CYGPATH_W) 'modules/module_py.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_py.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_py.Tpo modules/$(DEPDIR)/mino-module_py.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_py.c' object='modules/mino-module_py.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_py.obj `if test -f 'modules/module_py.c'; then $(CYGPATH_W) 'modules/module_py.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_py.c'; fi`
+
+modules/mino-module_sh.o: modules/module_sh.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_sh.o -MD -MP -MF modules/$(DEPDIR)/mino-module_sh.Tpo -c -o modules/mino-module_sh.o `test -f 'modules/module_sh.c' || echo '$(srcdir)/'`modules/module_sh.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_sh.Tpo modules/$(DEPDIR)/mino-module_sh.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_sh.c' object='modules/mino-module_sh.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_sh.o `test -f 'modules/module_sh.c' || echo '$(srcdir)/'`modules/module_sh.c
+
+modules/mino-module_sh.obj: modules/module_sh.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_sh.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_sh.Tpo -c -o modules/mino-module_sh.obj `if test -f 'modules/module_sh.c'; then $(CYGPATH_W) 'modules/module_sh.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_sh.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_sh.Tpo modules/$(DEPDIR)/mino-module_sh.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_sh.c' object='modules/mino-module_sh.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_sh.obj `if test -f 'modules/module_sh.c'; then $(CYGPATH_W) 'modules/module_sh.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_sh.c'; fi`
+
+modules/mino-module_texi.o: modules/module_texi.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_texi.o -MD -MP -MF modules/$(DEPDIR)/mino-module_texi.Tpo -c -o modules/mino-module_texi.o `test -f 'modules/module_texi.c' || echo '$(srcdir)/'`modules/module_texi.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_texi.Tpo modules/$(DEPDIR)/mino-module_texi.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_texi.c' object='modules/mino-module_texi.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_texi.o `test -f 'modules/module_texi.c' || echo '$(srcdir)/'`modules/module_texi.c
+
+modules/mino-module_texi.obj: modules/module_texi.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -MT modules/mino-module_texi.obj -MD -MP -MF modules/$(DEPDIR)/mino-module_texi.Tpo -c -o modules/mino-module_texi.obj `if test -f 'modules/module_texi.c'; then $(CYGPATH_W) 'modules/module_texi.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_texi.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) modules/$(DEPDIR)/mino-module_texi.Tpo modules/$(DEPDIR)/mino-module_texi.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='modules/module_texi.c' object='modules/mino-module_texi.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mino_CFLAGS) $(CFLAGS) -c -o modules/mino-module_texi.obj `if test -f 'modules/module_texi.c'; then $(CYGPATH_W) 'modules/module_texi.c'; else $(CYGPATH_W) '$(srcdir)/modules/module_texi.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -657,33 +1052,33 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/dialogs.Po
-	-rm -f ./$(DEPDIR)/dir.Po
-	-rm -f ./$(DEPDIR)/edit.Po
-	-rm -f ./$(DEPDIR)/file.Po
-	-rm -f ./$(DEPDIR)/help.Po
-	-rm -f ./$(DEPDIR)/init.Po
-	-rm -f ./$(DEPDIR)/kbd.Po
-	-rm -f ./$(DEPDIR)/linestruct.Po
-	-rm -f ./$(DEPDIR)/main.Po
-	-rm -f ./$(DEPDIR)/menu.Po
-	-rm -f ./$(DEPDIR)/opensave.Po
-	-rm -f ./$(DEPDIR)/options.Po
-	-rm -f ./$(DEPDIR)/screen.Po
-	-rm -f ./$(DEPDIR)/ukbd.Po
-	-rm -f modules/$(DEPDIR)/module_asm.Po
-	-rm -f modules/$(DEPDIR)/module_bas.Po
-	-rm -f modules/$(DEPDIR)/module_c.Po
-	-rm -f modules/$(DEPDIR)/module_cpp.Po
-	-rm -f modules/$(DEPDIR)/module_f77.Po
-	-rm -f modules/$(DEPDIR)/module_html.Po
-	-rm -f modules/$(DEPDIR)/module_js.Po
-	-rm -f modules/$(DEPDIR)/module_pas.Po
-	-rm -f modules/$(DEPDIR)/module_perl.Po
-	-rm -f modules/$(DEPDIR)/module_py.Po
-	-rm -f modules/$(DEPDIR)/module_sh.Po
-	-rm -f modules/$(DEPDIR)/module_texi.Po
-	-rm -f modules/$(DEPDIR)/modules.Po
+		-rm -f ./$(DEPDIR)/mino-dialogs.Po
+	-rm -f ./$(DEPDIR)/mino-dir.Po
+	-rm -f ./$(DEPDIR)/mino-edit.Po
+	-rm -f ./$(DEPDIR)/mino-file.Po
+	-rm -f ./$(DEPDIR)/mino-help.Po
+	-rm -f ./$(DEPDIR)/mino-init.Po
+	-rm -f ./$(DEPDIR)/mino-kbd.Po
+	-rm -f ./$(DEPDIR)/mino-linestruct.Po
+	-rm -f ./$(DEPDIR)/mino-main.Po
+	-rm -f ./$(DEPDIR)/mino-menu.Po
+	-rm -f ./$(DEPDIR)/mino-opensave.Po
+	-rm -f ./$(DEPDIR)/mino-options.Po
+	-rm -f ./$(DEPDIR)/mino-screen.Po
+	-rm -f ./$(DEPDIR)/mino-ukbd.Po
+	-rm -f modules/$(DEPDIR)/mino-module_asm.Po
+	-rm -f modules/$(DEPDIR)/mino-module_bas.Po
+	-rm -f modules/$(DEPDIR)/mino-module_c.Po
+	-rm -f modules/$(DEPDIR)/mino-module_cpp.Po
+	-rm -f modules/$(DEPDIR)/mino-module_f77.Po
+	-rm -f modules/$(DEPDIR)/mino-module_html.Po
+	-rm -f modules/$(DEPDIR)/mino-module_js.Po
+	-rm -f modules/$(DEPDIR)/mino-module_pas.Po
+	-rm -f modules/$(DEPDIR)/mino-module_perl.Po
+	-rm -f modules/$(DEPDIR)/mino-module_py.Po
+	-rm -f modules/$(DEPDIR)/mino-module_sh.Po
+	-rm -f modules/$(DEPDIR)/mino-module_texi.Po
+	-rm -f modules/$(DEPDIR)/mino-modules.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -729,33 +1124,33 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/dialogs.Po
-	-rm -f ./$(DEPDIR)/dir.Po
-	-rm -f ./$(DEPDIR)/edit.Po
-	-rm -f ./$(DEPDIR)/file.Po
-	-rm -f ./$(DEPDIR)/help.Po
-	-rm -f ./$(DEPDIR)/init.Po
-	-rm -f ./$(DEPDIR)/kbd.Po
-	-rm -f ./$(DEPDIR)/linestruct.Po
-	-rm -f ./$(DEPDIR)/main.Po
-	-rm -f ./$(DEPDIR)/menu.Po
-	-rm -f ./$(DEPDIR)/opensave.Po
-	-rm -f ./$(DEPDIR)/options.Po
-	-rm -f ./$(DEPDIR)/screen.Po
-	-rm -f ./$(DEPDIR)/ukbd.Po
-	-rm -f modules/$(DEPDIR)/module_asm.Po
-	-rm -f modules/$(DEPDIR)/module_bas.Po
-	-rm -f modules/$(DEPDIR)/module_c.Po
-	-rm -f modules/$(DEPDIR)/module_cpp.Po
-	-rm -f modules/$(DEPDIR)/module_f77.Po
-	-rm -f modules/$(DEPDIR)/module_html.Po
-	-rm -f modules/$(DEPDIR)/module_js.Po
-	-rm -f modules/$(DEPDIR)/module_pas.Po
-	-rm -f modules/$(DEPDIR)/module_perl.Po
-	-rm -f modules/$(DEPDIR)/module_py.Po
-	-rm -f modules/$(DEPDIR)/module_sh.Po
-	-rm -f modules/$(DEPDIR)/module_texi.Po
-	-rm -f modules/$(DEPDIR)/modules.Po
+		-rm -f ./$(DEPDIR)/mino-dialogs.Po
+	-rm -f ./$(DEPDIR)/mino-dir.Po
+	-rm -f ./$(DEPDIR)/mino-edit.Po
+	-rm -f ./$(DEPDIR)/mino-file.Po
+	-rm -f ./$(DEPDIR)/mino-help.Po
+	-rm -f ./$(DEPDIR)/mino-init.Po
+	-rm -f ./$(DEPDIR)/mino-kbd.Po
+	-rm -f ./$(DEPDIR)/mino-linestruct.Po
+	-rm -f ./$(DEPDIR)/mino-main.Po
+	-rm -f ./$(DEPDIR)/mino-menu.Po
+	-rm -f ./$(DEPDIR)/mino-opensave.Po
+	-rm -f ./$(DEPDIR)/mino-options.Po
+	-rm -f ./$(DEPDIR)/mino-screen.Po
+	-rm -f ./$(DEPDIR)/mino-ukbd.Po
+	-rm -f modules/$(DEPDIR)/mino-module_asm.Po
+	-rm -f modules/$(DEPDIR)/mino-module_bas.Po
+	-rm -f modules/$(DEPDIR)/mino-module_c.Po
+	-rm -f modules/$(DEPDIR)/mino-module_cpp.Po
+	-rm -f modules/$(DEPDIR)/mino-module_f77.Po
+	-rm -f modules/$(DEPDIR)/mino-module_html.Po
+	-rm -f modules/$(DEPDIR)/mino-module_js.Po
+	-rm -f modules/$(DEPDIR)/mino-module_pas.Po
+	-rm -f modules/$(DEPDIR)/mino-module_perl.Po
+	-rm -f modules/$(DEPDIR)/mino-module_py.Po
+	-rm -f modules/$(DEPDIR)/mino-module_sh.Po
+	-rm -f modules/$(DEPDIR)/mino-module_texi.Po
+	-rm -f modules/$(DEPDIR)/mino-modules.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

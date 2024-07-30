@@ -306,7 +306,6 @@ memerr:
 // returns the number of chars added to the undo action.
 void undoAddWChar(undoActionType utype, int lwhere, int cwhere, wchar_t *rwhat)
 {
-    int save = cwhere;
     wchar_t *what, c;
 
     if(utype == UNDO_ACTION_INSERT) what = rwhat;
@@ -329,7 +328,9 @@ static int extendClipboardSize(int newSize)
     if(!clipboard)
     {
         msgBox("Insufficient memory", BUTTON_OK, ERROR);
+        return 0;
     }
+    return 1;
 }
 
 int may_swap_selection_range(void)
@@ -411,19 +412,19 @@ void editMenu_Copy(void)
 
     //swap the select range boundaries if needed
     swap = may_swap_selection_range();
+    j = sel_range_start.nchar;
 
     total_lines_in_clipboard = sel_range_end.nline-sel_range_start.nline;
 
     if(total_lines_in_clipboard == 0)
     {
-        i = sel_range_end.nchar-sel_range_start.nchar;
+        i = sel_range_end.nchar-j;
         if(!extendClipboardSize(i)) goto memerr;
         wcsncpy(clipboard, lines[sel_range_start.nline]->text+j, i);
         clipboard[i] = L'\0';
     }
     else
     {
-        j = sel_range_start.nchar;
         l = (lines[sel_range_start.nline]->charCount-j);
         k = sel_range_end.nchar;
         l += k;
@@ -1193,6 +1194,7 @@ void editMenu_Find(void)
 
             case(DOWN_KEY):
                 if(GNU_DOS_LEVEL > 1) break;
+                __attribute__((fallthrough));
 
             case(ENTER_KEY):
             case(SPACE_KEY):
@@ -1439,12 +1441,11 @@ void _do_replace(int pos, wchar_t *f, wchar_t *r)
 {
     int i = wcslen(f);
     int j = wcslen(r);
-    int k, l, n, m;
+    int k, l;
     wchar_t *f2, c;
 
     k = find_result_pos[pos].nchar;
     l = find_result_pos[pos].nline;
-    n = 0;
     firstVisLine = l;
     selectedLine = 0;
     selectedChar = k;

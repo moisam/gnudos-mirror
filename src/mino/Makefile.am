@@ -25,3 +25,4 @@ ACLOCAL_AMFLAGS = -I m4
 #AM_CPPFLAGS = -I$(srcdir)/modules
 bin_PROGRAMS = mino
 mino_SOURCES = main.c defs.h dialogs.h edit.h file.h help.h kbd.h options.h screen.h ukbd.h dialogs.c dir.c edit.c file.c help.c init.c kbd.c linestruct.c menu.c opensave.c options.c screen.c ukbd.c modules/modules.c modules/modules.h modules/module_asm.c modules/module_bas.c modules/module_c.c modules/module_cpp.c modules/module_f77.c modules/module_html.c modules/module_js.c modules/module_pas.c modules/module_perl.c modules/module_py.c modules/module_sh.c modules/module_texi.c
+mino_CFLAGS = -Wall -Wextra -pedantic

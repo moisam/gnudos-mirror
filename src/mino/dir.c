@@ -40,7 +40,7 @@ do {                                            \
     return 0;                                   \
 } while(0)
 
-static int one(const struct dirent *unused) 
+static int one(const struct dirent *unused __attribute__((unused)))
 {
     return 1;
 }
