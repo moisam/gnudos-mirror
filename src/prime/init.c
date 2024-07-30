@@ -165,7 +165,7 @@ int read_config_file(void)
         exit(1);
     }
 
-    config_file_name = malloc(strlen(pass->pw_dir)+12);
+    config_file_name = malloc(strlen(pass->pw_dir)+13);
 
     if(!config_file_name)
     {
@@ -267,7 +267,7 @@ int write_config_file_defaults(void)
         return 0;
     }
 
-    config_file_name = malloc(strlen(pass->pw_dir)+12);
+    config_file_name = malloc(strlen(pass->pw_dir)+13);
 
     if(!config_file_name)
     {

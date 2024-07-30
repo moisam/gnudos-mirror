@@ -77,10 +77,6 @@ extern int GNU_DOS_LEVEL;
 extern char *prime_ver;
 extern char *copyright_notice;
 
-static int one(const struct dirent *unused) 
-{
-    return 1;
-}
 
 /******************************
  * Function prototypes

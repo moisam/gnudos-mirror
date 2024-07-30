@@ -421,7 +421,7 @@ void write_config_file(void)
         return;
     }
 
-    config_file_name = malloc(strlen(pass->pw_dir)+12);
+    config_file_name = malloc(strlen(pass->pw_dir)+13);
 
     if(!config_file_name)
     {

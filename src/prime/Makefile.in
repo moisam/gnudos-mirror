@@ -125,17 +125,23 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_prime_OBJECTS = main.$(OBJEXT) args.$(OBJEXT) options.$(OBJEXT) \
-	properties.$(OBJEXT) cutcopy.$(OBJEXT) edit.$(OBJEXT) \
-	file.$(OBJEXT) find.$(OBJEXT) menu.$(OBJEXT) dialogs.$(OBJEXT) \
-	kbd.$(OBJEXT) ukbd.$(OBJEXT) screen.$(OBJEXT) \
-	dirstruct.$(OBJEXT) help.$(OBJEXT) init.$(OBJEXT)
+am_prime_OBJECTS = prime-main.$(OBJEXT) prime-args.$(OBJEXT) \
+	prime-options.$(OBJEXT) prime-properties.$(OBJEXT) \
+	prime-cutcopy.$(OBJEXT) prime-edit.$(OBJEXT) \
+	prime-file.$(OBJEXT) prime-find.$(OBJEXT) prime-menu.$(OBJEXT) \
+	prime-dialogs.$(OBJEXT) prime-kbd.$(OBJEXT) \
+	prime-ukbd.$(OBJEXT) prime-screen.$(OBJEXT) \
+	prime-dirstruct.$(OBJEXT) prime-help.$(OBJEXT) \
+	prime-init.$(OBJEXT)
 prime_OBJECTS = $(am_prime_OBJECTS)
 prime_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+prime_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(prime_CFLAGS) $(CFLAGS) \
+	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -151,13 +157,15 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/args.Po ./$(DEPDIR)/cutcopy.Po \
-	./$(DEPDIR)/dialogs.Po ./$(DEPDIR)/dirstruct.Po \
-	./$(DEPDIR)/edit.Po ./$(DEPDIR)/file.Po ./$(DEPDIR)/find.Po \
-	./$(DEPDIR)/help.Po ./$(DEPDIR)/init.Po ./$(DEPDIR)/kbd.Po \
-	./$(DEPDIR)/main.Po ./$(DEPDIR)/menu.Po ./$(DEPDIR)/options.Po \
-	./$(DEPDIR)/properties.Po ./$(DEPDIR)/screen.Po \
-	./$(DEPDIR)/ukbd.Po
+am__depfiles_remade = ./$(DEPDIR)/prime-args.Po \
+	./$(DEPDIR)/prime-cutcopy.Po ./$(DEPDIR)/prime-dialogs.Po \
+	./$(DEPDIR)/prime-dirstruct.Po ./$(DEPDIR)/prime-edit.Po \
+	./$(DEPDIR)/prime-file.Po ./$(DEPDIR)/prime-find.Po \
+	./$(DEPDIR)/prime-help.Po ./$(DEPDIR)/prime-init.Po \
+	./$(DEPDIR)/prime-kbd.Po ./$(DEPDIR)/prime-main.Po \
+	./$(DEPDIR)/prime-menu.Po ./$(DEPDIR)/prime-options.Po \
+	./$(DEPDIR)/prime-properties.Po ./$(DEPDIR)/prime-screen.Po \
+	./$(DEPDIR)/prime-ukbd.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -325,6 +333,7 @@ top_srcdir = @top_srcdir@
 #AUTOMAKE_OPTIONS = subdir-objects
 ACLOCAL_AMFLAGS = -I m4
 prime_SOURCES = main.c args.c options.c options.h cutcopy.h defs.h edit.h find.h properties.c cutcopy.c edit.c file.c find.c menu.c dialogs.c kbd.c ukbd.c screen.c dialogs.h kbd.h screen.h ukbd.h dirstruct.c dirstruct.h file.h help.c help.h init.c
+prime_CFLAGS = -Wall -Wextra -pedantic
 all: all-am
 
 .SUFFIXES:
@@ -410,7 +419,7 @@ clean-binPROGRAMS:
 
 prime$(EXEEXT): $(prime_OBJECTS) $(prime_DEPENDENCIES) $(EXTRA_prime_DEPENDENCIES) 
 	@rm -f prime$(EXEEXT)
-	$(AM_V_CCLD)$(LINK) $(prime_OBJECTS) $(prime_LDADD) $(LIBS)
+	$(AM_V_CCLD)$(prime_LINK) $(prime_OBJECTS) $(prime_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -418,22 +427,22 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/args.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/cutcopy.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dialogs.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dirstruct.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/edit.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/file.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/find.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/help.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/init.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kbd.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/menu.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/options.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/properties.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/screen.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ukbd.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-args.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-cutcopy.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-dialogs.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-dirstruct.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-edit.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-file.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-find.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-help.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-init.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-kbd.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-main.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-menu.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-options.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-properties.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-screen.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/prime-ukbd.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -461,6 +470,230 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+
+prime-main.o: main.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-main.o -MD -MP -MF $(DEPDIR)/prime-main.Tpo -c -o prime-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-main.Tpo $(DEPDIR)/prime-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='main.c' object='prime-main.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-main.o `test -f 'main.c' || echo '$(srcdir)/'`main.c
+
+prime-main.obj: main.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-main.obj -MD -MP -MF $(DEPDIR)/prime-main.Tpo -c -o prime-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-main.Tpo $(DEPDIR)/prime-main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='main.c' object='prime-main.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+
+prime-args.o: args.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-args.o -MD -MP -MF $(DEPDIR)/prime-args.Tpo -c -o prime-args.o `test -f 'args.c' || echo '$(srcdir)/'`args.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-args.Tpo $(DEPDIR)/prime-args.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='args.c' object='prime-args.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-args.o `test -f 'args.c' || echo '$(srcdir)/'`args.c
+
+prime-args.obj: args.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-args.obj -MD -MP -MF $(DEPDIR)/prime-args.Tpo -c -o prime-args.obj `if test -f 'args.c'; then $(CYGPATH_W) 'args.c'; else $(CYGPATH_W) '$(srcdir)/args.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-args.Tpo $(DEPDIR)/prime-args.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='args.c' object='prime-args.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-args.obj `if test -f 'args.c'; then $(CYGPATH_W) 'args.c'; else $(CYGPATH_W) '$(srcdir)/args.c'; fi`
+
+prime-options.o: options.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-options.o -MD -MP -MF $(DEPDIR)/prime-options.Tpo -c -o prime-options.o `test -f 'options.c' || echo '$(srcdir)/'`options.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-options.Tpo $(DEPDIR)/prime-options.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='options.c' object='prime-options.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-options.o `test -f 'options.c' || echo '$(srcdir)/'`options.c
+
+prime-options.obj: options.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-options.obj -MD -MP -MF $(DEPDIR)/prime-options.Tpo -c -o prime-options.obj `if test -f 'options.c'; then $(CYGPATH_W) 'options.c'; else $(CYGPATH_W) '$(srcdir)/options.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-options.Tpo $(DEPDIR)/prime-options.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='options.c' object='prime-options.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-options.obj `if test -f 'options.c'; then $(CYGPATH_W) 'options.c'; else $(CYGPATH_W) '$(srcdir)/options.c'; fi`
+
+prime-properties.o: properties.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-properties.o -MD -MP -MF $(DEPDIR)/prime-properties.Tpo -c -o prime-properties.o `test -f 'properties.c' || echo '$(srcdir)/'`properties.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-properties.Tpo $(DEPDIR)/prime-properties.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='properties.c' object='prime-properties.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-properties.o `test -f 'properties.c' || echo '$(srcdir)/'`properties.c
+
+prime-properties.obj: properties.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-properties.obj -MD -MP -MF $(DEPDIR)/prime-properties.Tpo -c -o prime-properties.obj `if test -f 'properties.c'; then $(CYGPATH_W) 'properties.c'; else $(CYGPATH_W) '$(srcdir)/properties.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-properties.Tpo $(DEPDIR)/prime-properties.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='properties.c' object='prime-properties.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-properties.obj `if test -f 'properties.c'; then $(CYGPATH_W) 'properties.c'; else $(CYGPATH_W) '$(srcdir)/properties.c'; fi`
+
+prime-cutcopy.o: cutcopy.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-cutcopy.o -MD -MP -MF $(DEPDIR)/prime-cutcopy.Tpo -c -o prime-cutcopy.o `test -f 'cutcopy.c' || echo '$(srcdir)/'`cutcopy.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-cutcopy.Tpo $(DEPDIR)/prime-cutcopy.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cutcopy.c' object='prime-cutcopy.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-cutcopy.o `test -f 'cutcopy.c' || echo '$(srcdir)/'`cutcopy.c
+
+prime-cutcopy.obj: cutcopy.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-cutcopy.obj -MD -MP -MF $(DEPDIR)/prime-cutcopy.Tpo -c -o prime-cutcopy.obj `if test -f 'cutcopy.c'; then $(CYGPATH_W) 'cutcopy.c'; else $(CYGPATH_W) '$(srcdir)/cutcopy.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-cutcopy.Tpo $(DEPDIR)/prime-cutcopy.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='cutcopy.c' object='prime-cutcopy.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-cutcopy.obj `if test -f 'cutcopy.c'; then $(CYGPATH_W) 'cutcopy.c'; else $(CYGPATH_W) '$(srcdir)/cutcopy.c'; fi`
+
+prime-edit.o: edit.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-edit.o -MD -MP -MF $(DEPDIR)/prime-edit.Tpo -c -o prime-edit.o `test -f 'edit.c' || echo '$(srcdir)/'`edit.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-edit.Tpo $(DEPDIR)/prime-edit.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='edit.c' object='prime-edit.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-edit.o `test -f 'edit.c' || echo '$(srcdir)/'`edit.c
+
+prime-edit.obj: edit.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-edit.obj -MD -MP -MF $(DEPDIR)/prime-edit.Tpo -c -o prime-edit.obj `if test -f 'edit.c'; then $(CYGPATH_W) 'edit.c'; else $(CYGPATH_W) '$(srcdir)/edit.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-edit.Tpo $(DEPDIR)/prime-edit.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='edit.c' object='prime-edit.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-edit.obj `if test -f 'edit.c'; then $(CYGPATH_W) 'edit.c'; else $(CYGPATH_W) '$(srcdir)/edit.c'; fi`
+
+prime-file.o: file.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-file.o -MD -MP -MF $(DEPDIR)/prime-file.Tpo -c -o prime-file.o `test -f 'file.c' || echo '$(srcdir)/'`file.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-file.Tpo $(DEPDIR)/prime-file.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='file.c' object='prime-file.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-file.o `test -f 'file.c' || echo '$(srcdir)/'`file.c
+
+prime-file.obj: file.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-file.obj -MD -MP -MF $(DEPDIR)/prime-file.Tpo -c -o prime-file.obj `if test -f 'file.c'; then $(CYGPATH_W) 'file.c'; else $(CYGPATH_W) '$(srcdir)/file.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-file.Tpo $(DEPDIR)/prime-file.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='file.c' object='prime-file.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-file.obj `if test -f 'file.c'; then $(CYGPATH_W) 'file.c'; else $(CYGPATH_W) '$(srcdir)/file.c'; fi`
+
+prime-find.o: find.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-find.o -MD -MP -MF $(DEPDIR)/prime-find.Tpo -c -o prime-find.o `test -f 'find.c' || echo '$(srcdir)/'`find.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-find.Tpo $(DEPDIR)/prime-find.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='find.c' object='prime-find.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-find.o `test -f 'find.c' || echo '$(srcdir)/'`find.c
+
+prime-find.obj: find.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-find.obj -MD -MP -MF $(DEPDIR)/prime-find.Tpo -c -o prime-find.obj `if test -f 'find.c'; then $(CYGPATH_W) 'find.c'; else $(CYGPATH_W) '$(srcdir)/find.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-find.Tpo $(DEPDIR)/prime-find.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='find.c' object='prime-find.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-find.obj `if test -f 'find.c'; then $(CYGPATH_W) 'find.c'; else $(CYGPATH_W) '$(srcdir)/find.c'; fi`
+
+prime-menu.o: menu.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-menu.o -MD -MP -MF $(DEPDIR)/prime-menu.Tpo -c -o prime-menu.o `test -f 'menu.c' || echo '$(srcdir)/'`menu.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-menu.Tpo $(DEPDIR)/prime-menu.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='menu.c' object='prime-menu.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-menu.o `test -f 'menu.c' || echo '$(srcdir)/'`menu.c
+
+prime-menu.obj: menu.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-menu.obj -MD -MP -MF $(DEPDIR)/prime-menu.Tpo -c -o prime-menu.obj `if test -f 'menu.c'; then $(CYGPATH_W) 'menu.c'; else $(CYGPATH_W) '$(srcdir)/menu.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-menu.Tpo $(DEPDIR)/prime-menu.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='menu.c' object='prime-menu.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-menu.obj `if test -f 'menu.c'; then $(CYGPATH_W) 'menu.c'; else $(CYGPATH_W) '$(srcdir)/menu.c'; fi`
+
+prime-dialogs.o: dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-dialogs.o -MD -MP -MF $(DEPDIR)/prime-dialogs.Tpo -c -o prime-dialogs.o `test -f 'dialogs.c' || echo '$(srcdir)/'`dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-dialogs.Tpo $(DEPDIR)/prime-dialogs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dialogs.c' object='prime-dialogs.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-dialogs.o `test -f 'dialogs.c' || echo '$(srcdir)/'`dialogs.c
+
+prime-dialogs.obj: dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-dialogs.obj -MD -MP -MF $(DEPDIR)/prime-dialogs.Tpo -c -o prime-dialogs.obj `if test -f 'dialogs.c'; then $(CYGPATH_W) 'dialogs.c'; else $(CYGPATH_W) '$(srcdir)/dialogs.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-dialogs.Tpo $(DEPDIR)/prime-dialogs.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dialogs.c' object='prime-dialogs.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-dialogs.obj `if test -f 'dialogs.c'; then $(CYGPATH_W) 'dialogs.c'; else $(CYGPATH_W) '$(srcdir)/dialogs.c'; fi`
+
+prime-kbd.o: kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-kbd.o -MD -MP -MF $(DEPDIR)/prime-kbd.Tpo -c -o prime-kbd.o `test -f 'kbd.c' || echo '$(srcdir)/'`kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-kbd.Tpo $(DEPDIR)/prime-kbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kbd.c' object='prime-kbd.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-kbd.o `test -f 'kbd.c' || echo '$(srcdir)/'`kbd.c
+
+prime-kbd.obj: kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-kbd.obj -MD -MP -MF $(DEPDIR)/prime-kbd.Tpo -c -o prime-kbd.obj `if test -f 'kbd.c'; then $(CYGPATH_W) 'kbd.c'; else $(CYGPATH_W) '$(srcdir)/kbd.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-kbd.Tpo $(DEPDIR)/prime-kbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kbd.c' object='prime-kbd.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-kbd.obj `if test -f 'kbd.c'; then $(CYGPATH_W) 'kbd.c'; else $(CYGPATH_W) '$(srcdir)/kbd.c'; fi`
+
+prime-ukbd.o: ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-ukbd.o -MD -MP -MF $(DEPDIR)/prime-ukbd.Tpo -c -o prime-ukbd.o `test -f 'ukbd.c' || echo '$(srcdir)/'`ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-ukbd.Tpo $(DEPDIR)/prime-ukbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ukbd.c' object='prime-ukbd.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-ukbd.o `test -f 'ukbd.c' || echo '$(srcdir)/'`ukbd.c
+
+prime-ukbd.obj: ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-ukbd.obj -MD -MP -MF $(DEPDIR)/prime-ukbd.Tpo -c -o prime-ukbd.obj `if test -f 'ukbd.c'; then $(CYGPATH_W) 'ukbd.c'; else $(CYGPATH_W) '$(srcdir)/ukbd.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-ukbd.Tpo $(DEPDIR)/prime-ukbd.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ukbd.c' object='prime-ukbd.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-ukbd.obj `if test -f 'ukbd.c'; then $(CYGPATH_W) 'ukbd.c'; else $(CYGPATH_W) '$(srcdir)/ukbd.c'; fi`
+
+prime-screen.o: screen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-screen.o -MD -MP -MF $(DEPDIR)/prime-screen.Tpo -c -o prime-screen.o `test -f 'screen.c' || echo '$(srcdir)/'`screen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-screen.Tpo $(DEPDIR)/prime-screen.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='screen.c' object='prime-screen.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-screen.o `test -f 'screen.c' || echo '$(srcdir)/'`screen.c
+
+prime-screen.obj: screen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-screen.obj -MD -MP -MF $(DEPDIR)/prime-screen.Tpo -c -o prime-screen.obj `if test -f 'screen.c'; then $(CYGPATH_W) 'screen.c'; else $(CYGPATH_W) '$(srcdir)/screen.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-screen.Tpo $(DEPDIR)/prime-screen.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='screen.c' object='prime-screen.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-screen.obj `if test -f 'screen.c'; then $(CYGPATH_W) 'screen.c'; else $(CYGPATH_W) '$(srcdir)/screen.c'; fi`
+
+prime-dirstruct.o: dirstruct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-dirstruct.o -MD -MP -MF $(DEPDIR)/prime-dirstruct.Tpo -c -o prime-dirstruct.o `test -f 'dirstruct.c' || echo '$(srcdir)/'`dirstruct.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-dirstruct.Tpo $(DEPDIR)/prime-dirstruct.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dirstruct.c' object='prime-dirstruct.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-dirstruct.o `test -f 'dirstruct.c' || echo '$(srcdir)/'`dirstruct.c
+
+prime-dirstruct.obj: dirstruct.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-dirstruct.obj -MD -MP -MF $(DEPDIR)/prime-dirstruct.Tpo -c -o prime-dirstruct.obj `if test -f 'dirstruct.c'; then $(CYGPATH_W) 'dirstruct.c'; else $(CYGPATH_W) '$(srcdir)/dirstruct.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-dirstruct.Tpo $(DEPDIR)/prime-dirstruct.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dirstruct.c' object='prime-dirstruct.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-dirstruct.obj `if test -f 'dirstruct.c'; then $(CYGPATH_W) 'dirstruct.c'; else $(CYGPATH_W) '$(srcdir)/dirstruct.c'; fi`
+
+prime-help.o: help.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-help.o -MD -MP -MF $(DEPDIR)/prime-help.Tpo -c -o prime-help.o `test -f 'help.c' || echo '$(srcdir)/'`help.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-help.Tpo $(DEPDIR)/prime-help.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='help.c' object='prime-help.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-help.o `test -f 'help.c' || echo '$(srcdir)/'`help.c
+
+prime-help.obj: help.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-help.obj -MD -MP -MF $(DEPDIR)/prime-help.Tpo -c -o prime-help.obj `if test -f 'help.c'; then $(CYGPATH_W) 'help.c'; else $(CYGPATH_W) '$(srcdir)/help.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-help.Tpo $(DEPDIR)/prime-help.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='help.c' object='prime-help.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-help.obj `if test -f 'help.c'; then $(CYGPATH_W) 'help.c'; else $(CYGPATH_W) '$(srcdir)/help.c'; fi`
+
+prime-init.o: init.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-init.o -MD -MP -MF $(DEPDIR)/prime-init.Tpo -c -o prime-init.o `test -f 'init.c' || echo '$(srcdir)/'`init.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-init.Tpo $(DEPDIR)/prime-init.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='init.c' object='prime-init.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-init.o `test -f 'init.c' || echo '$(srcdir)/'`init.c
+
+prime-init.obj: init.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -MT prime-init.obj -MD -MP -MF $(DEPDIR)/prime-init.Tpo -c -o prime-init.obj `if test -f 'init.c'; then $(CYGPATH_W) 'init.c'; else $(CYGPATH_W) '$(srcdir)/init.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/prime-init.Tpo $(DEPDIR)/prime-init.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='init.c' object='prime-init.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(prime_CFLAGS) $(CFLAGS) -c -o prime-init.obj `if test -f 'init.c'; then $(CYGPATH_W) 'init.c'; else $(CYGPATH_W) '$(srcdir)/init.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -594,22 +827,22 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/args.Po
-	-rm -f ./$(DEPDIR)/cutcopy.Po
-	-rm -f ./$(DEPDIR)/dialogs.Po
-	-rm -f ./$(DEPDIR)/dirstruct.Po
-	-rm -f ./$(DEPDIR)/edit.Po
-	-rm -f ./$(DEPDIR)/file.Po
-	-rm -f ./$(DEPDIR)/find.Po
-	-rm -f ./$(DEPDIR)/help.Po
-	-rm -f ./$(DEPDIR)/init.Po
-	-rm -f ./$(DEPDIR)/kbd.Po
-	-rm -f ./$(DEPDIR)/main.Po
-	-rm -f ./$(DEPDIR)/menu.Po
-	-rm -f ./$(DEPDIR)/options.Po
-	-rm -f ./$(DEPDIR)/properties.Po
-	-rm -f ./$(DEPDIR)/screen.Po
-	-rm -f ./$(DEPDIR)/ukbd.Po
+		-rm -f ./$(DEPDIR)/prime-args.Po
+	-rm -f ./$(DEPDIR)/prime-cutcopy.Po
+	-rm -f ./$(DEPDIR)/prime-dialogs.Po
+	-rm -f ./$(DEPDIR)/prime-dirstruct.Po
+	-rm -f ./$(DEPDIR)/prime-edit.Po
+	-rm -f ./$(DEPDIR)/prime-file.Po
+	-rm -f ./$(DEPDIR)/prime-find.Po
+	-rm -f ./$(DEPDIR)/prime-help.Po
+	-rm -f ./$(DEPDIR)/prime-init.Po
+	-rm -f ./$(DEPDIR)/prime-kbd.Po
+	-rm -f ./$(DEPDIR)/prime-main.Po
+	-rm -f ./$(DEPDIR)/prime-menu.Po
+	-rm -f ./$(DEPDIR)/prime-options.Po
+	-rm -f ./$(DEPDIR)/prime-properties.Po
+	-rm -f ./$(DEPDIR)/prime-screen.Po
+	-rm -f ./$(DEPDIR)/prime-ukbd.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -655,22 +888,22 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/args.Po
-	-rm -f ./$(DEPDIR)/cutcopy.Po
-	-rm -f ./$(DEPDIR)/dialogs.Po
-	-rm -f ./$(DEPDIR)/dirstruct.Po
-	-rm -f ./$(DEPDIR)/edit.Po
-	-rm -f ./$(DEPDIR)/file.Po
-	-rm -f ./$(DEPDIR)/find.Po
-	-rm -f ./$(DEPDIR)/help.Po
-	-rm -f ./$(DEPDIR)/init.Po
-	-rm -f ./$(DEPDIR)/kbd.Po
-	-rm -f ./$(DEPDIR)/main.Po
-	-rm -f ./$(DEPDIR)/menu.Po
-	-rm -f ./$(DEPDIR)/options.Po
-	-rm -f ./$(DEPDIR)/properties.Po
-	-rm -f ./$(DEPDIR)/screen.Po
-	-rm -f ./$(DEPDIR)/ukbd.Po
+		-rm -f ./$(DEPDIR)/prime-args.Po
+	-rm -f ./$(DEPDIR)/prime-cutcopy.Po
+	-rm -f ./$(DEPDIR)/prime-dialogs.Po
+	-rm -f ./$(DEPDIR)/prime-dirstruct.Po
+	-rm -f ./$(DEPDIR)/prime-edit.Po
+	-rm -f ./$(DEPDIR)/prime-file.Po
+	-rm -f ./$(DEPDIR)/prime-find.Po
+	-rm -f ./$(DEPDIR)/prime-help.Po
+	-rm -f ./$(DEPDIR)/prime-init.Po
+	-rm -f ./$(DEPDIR)/prime-kbd.Po
+	-rm -f ./$(DEPDIR)/prime-main.Po
+	-rm -f ./$(DEPDIR)/prime-menu.Po
+	-rm -f ./$(DEPDIR)/prime-options.Po
+	-rm -f ./$(DEPDIR)/prime-properties.Po
+	-rm -f ./$(DEPDIR)/prime-screen.Po
+	-rm -f ./$(DEPDIR)/prime-ukbd.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

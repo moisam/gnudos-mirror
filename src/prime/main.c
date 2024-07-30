@@ -86,6 +86,11 @@ size_t cwdlen_widechar; // length of that string
 #endif
 
 
+static int one(const struct dirent *unused __attribute__((unused))) 
+{
+    return 1;
+}
+
 void exit_gracefully(void)
 {
     write_config_file();
@@ -153,7 +158,7 @@ void print_dir_highlight(int selectedDir)
 
     mvprintw(row-1, 2, "%s", dirHighLight);
 
-    if(dirs[CURDIR]->namelen >= MAX_DIR_NAME_LEN)
+    if(dirs[CURDIR]->namelen >= (size_t)MAX_DIR_NAME_LEN)
     {
         mvaddch(row-1, 2, dirs[CURDIR]->star);
 
@@ -195,7 +200,7 @@ void print_file_highlight(int selectedFile)
 
     mvprintw(row-1, col-1, "%s", fileHighLight);
 
-    if(files[CURFILE]->namelen >= MAX_FILE_NAME_LEN)
+    if(files[CURFILE]->namelen >= (size_t)MAX_FILE_NAME_LEN)
     {
         mvaddch(row-1, col-1, files[CURFILE]->star);
 
@@ -276,7 +281,7 @@ void shiftFilesUp(int pos)
  * *************************************/
 int main(int argc, char **argv) 
 {
-    int ch, i;
+    int ch;
     char *tmp;
 
     setlocale(LC_ALL, "");
@@ -1340,7 +1345,7 @@ void refreshWindows(void)
  * **************************************/
 void refreshDirView(void) 
 {
-    int i, j, k;
+    int i, k;
 
     //if(activeWindow == DIR_WIN) setScreenColors(GREEN, BG_COLOR[COLOR_WINDOW]);
 
@@ -1380,7 +1385,7 @@ void refreshDirView(void)
  * **************************************/
 void refreshFileView() 
 {
-    int i, j, k;
+    int i, k;
 
     //if(activeWindow == FILE_WIN) setScreenColors(GREEN, BG_COLOR[COLOR_WINDOW]);
 
@@ -1429,7 +1434,7 @@ void refreshBottomView()
     {
         printw("CWD: ");
 
-        if(cwdlen_widechar > SCREEN_W-7) 
+        if((int)cwdlen_widechar > SCREEN_W-7) 
         {    //check if cwd length is more than display width
             //show just enought chars of the string
             addnwstr(cwd_widechar, SCREEN_W-12);

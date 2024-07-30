@@ -163,10 +163,10 @@ void findFile(void)
                 if(sel == 0 || sel == 4) 
                 {    //if pressed space in input field, insert the space
                     goto enterNewChar;
-                    break;
                 }
+                //if pressed space on a button or option, fall through to ENTER
+                __attribute__((fallthrough));
 
-            //if pressed space on a button or option, fall through to ENTER
             case(ENTER_KEY):
                 switch(sel)
                 {

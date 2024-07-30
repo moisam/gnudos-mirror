@@ -43,6 +43,11 @@ static void moveThisDir(char *tmp, int level, FILE *logfile);
 static void cutOne(void);
 
 
+static int one(const struct dirent *unused __attribute__((unused))) 
+{
+    return 1;
+}
+
 mode_t get_mode(__mode_t st_mode)
 {
     mode_t mode = 00;
@@ -560,7 +565,7 @@ static void __copyMoveDir(char *tmp, int level, int moving, FILE *logfile)
     drawBox(h-2, w-30, h+2, w+30, msg, 1);
     move(h-2, w-30);
 
-    if(strlen(str) > w-2)
+    if((int)strlen(str) > w-2)
     {
         for(n = 0; n < w-2; n++) addch(str[n]);
     }
@@ -717,7 +722,7 @@ void deleteThisDir(char *tmp, int level, FILE *logfile)
     drawBox(h-2, w-30, h+2, w+30, " Deleting ", 1);
     move(h-2, w-30);
 
-    if(strlen(tmp) > w-2)
+    if((int)strlen(tmp) > w-2)
     {
         for(n = 0; n < w-2; n++) addch(tmp[n]);
     }

@@ -30,6 +30,11 @@
 #include "defs.h"
 #include "file.h"
 
+static int one(const struct dirent *unused __attribute__((unused))) 
+{
+    return 1;
+}
+
 void purgeLogFile(FILE *logfile)
 {
     fseek(logfile, 0, SEEK_END);
