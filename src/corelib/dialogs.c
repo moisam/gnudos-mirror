@@ -49,15 +49,6 @@ int firstVisChar = 0;   //which char is the first in input line?
 int MAX_MSG_BOX_W;
 int MAX_MSG_BOX_H;
 
-static int x, y, w, h;
-
-/* mask values for bit pattern of first byte in multi-byte
-     UTF-8 sequences: 
-       192 - 110xxxxx - for U+0080 to U+07FF 
-       224 - 1110xxxx - for U+0800 to U+FFFF 
-       240 - 11110xxx - for U+010000 to U+1FFFFF */
-static unsigned short mask[] = {192, 224, 240};
-
 /* input string returned by the inputBoxI() function */
 char input[(MAX_INPUT_MSG_LEN*2)+1];
 
@@ -170,7 +161,7 @@ static void __dialog_prologueWC(int *msgW, int *msgH, wchar_t *msg,
                                 wchar_t *title, int *x, int *y)
 {
     int i, j, l;
-    size_t len = wcslen(msg);
+    int len = wcslen(msg);
 
     MAX_MSG_BOX_H = SCREEN_H-2;
     MAX_MSG_BOX_W = SCREEN_W-2;
@@ -420,8 +411,10 @@ wchar_t *inputBoxIWC(wchar_t *msg, wchar_t *inputValue, wchar_t *title)
             case(SPACE_KEY):
                 if(sel == 2) 
                 {    //if pressed space in input field, insert the space
+                    utf8_bytes = 1;
                     goto enterInputChar;
                 }    //if pressed space on a button, fall through to ENTER
+                __attribute__((fallthrough));
 
             case(ENTER_KEY):
                 if(sel == 0 || sel == 2)
@@ -618,7 +611,6 @@ enterInputChar: ;
                     wcinput[firstVisChar+(highlightChar++)] = wch;
                     inputLen++;
 
-finishEnterChar:
                     if(highlightChar >= msgW-3)
                     {   //need to scroll string
                         //adjust cursor to point at input field

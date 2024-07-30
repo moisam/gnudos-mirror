@@ -155,15 +155,16 @@ am__installdirs = "$(DESTDIR)$(libdir)" \
 	"$(DESTDIR)$(library_includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libgnudos_la_LIBADD =
-am_libgnudos_la_OBJECTS = kbd.lo ukbd.lo screen.lo dialogs.lo
+am_libgnudos_la_OBJECTS = libgnudos_la-kbd.lo libgnudos_la-ukbd.lo \
+	libgnudos_la-screen.lo libgnudos_la-dialogs.lo
 libgnudos_la_OBJECTS = $(am_libgnudos_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
 libgnudos_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(libgnudos_la_LDFLAGS) $(LDFLAGS) -o $@
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(libgnudos_la_CFLAGS) \
+	$(CFLAGS) $(libgnudos_la_LDFLAGS) $(LDFLAGS) -o $@
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -179,8 +180,10 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/dialogs.Plo ./$(DEPDIR)/kbd.Plo \
-	./$(DEPDIR)/screen.Plo ./$(DEPDIR)/ukbd.Plo
+am__depfiles_remade = ./$(DEPDIR)/libgnudos_la-dialogs.Plo \
+	./$(DEPDIR)/libgnudos_la-kbd.Plo \
+	./$(DEPDIR)/libgnudos_la-screen.Plo \
+	./$(DEPDIR)/libgnudos_la-ukbd.Plo
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -354,6 +357,7 @@ libgnudos_la_SOURCES = kbd.c ukbd.c screen.c dialogs.c
 library_includedir = $(includedir)/console
 library_include_HEADERS = kbd.h ukbd.h screen.h dialogs.h
 libgnudos_la_LDFLAGS = -version-info $(LIB_VERSION)
+libgnudos_la_CFLAGS = -Wall -Wextra -pedantic
 all: all-am
 
 .SUFFIXES:
@@ -432,10 +436,10 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dialogs.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/kbd.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/screen.Plo@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ukbd.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnudos_la-dialogs.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnudos_la-kbd.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnudos_la-screen.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgnudos_la-ukbd.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -463,6 +467,34 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
+
+libgnudos_la-kbd.lo: kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -MT libgnudos_la-kbd.lo -MD -MP -MF $(DEPDIR)/libgnudos_la-kbd.Tpo -c -o libgnudos_la-kbd.lo `test -f 'kbd.c' || echo '$(srcdir)/'`kbd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnudos_la-kbd.Tpo $(DEPDIR)/libgnudos_la-kbd.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kbd.c' object='libgnudos_la-kbd.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -c -o libgnudos_la-kbd.lo `test -f 'kbd.c' || echo '$(srcdir)/'`kbd.c
+
+libgnudos_la-ukbd.lo: ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -MT libgnudos_la-ukbd.lo -MD -MP -MF $(DEPDIR)/libgnudos_la-ukbd.Tpo -c -o libgnudos_la-ukbd.lo `test -f 'ukbd.c' || echo '$(srcdir)/'`ukbd.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnudos_la-ukbd.Tpo $(DEPDIR)/libgnudos_la-ukbd.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ukbd.c' object='libgnudos_la-ukbd.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -c -o libgnudos_la-ukbd.lo `test -f 'ukbd.c' || echo '$(srcdir)/'`ukbd.c
+
+libgnudos_la-screen.lo: screen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -MT libgnudos_la-screen.lo -MD -MP -MF $(DEPDIR)/libgnudos_la-screen.Tpo -c -o libgnudos_la-screen.lo `test -f 'screen.c' || echo '$(srcdir)/'`screen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnudos_la-screen.Tpo $(DEPDIR)/libgnudos_la-screen.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='screen.c' object='libgnudos_la-screen.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -c -o libgnudos_la-screen.lo `test -f 'screen.c' || echo '$(srcdir)/'`screen.c
+
+libgnudos_la-dialogs.lo: dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -MT libgnudos_la-dialogs.lo -MD -MP -MF $(DEPDIR)/libgnudos_la-dialogs.Tpo -c -o libgnudos_la-dialogs.lo `test -f 'dialogs.c' || echo '$(srcdir)/'`dialogs.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgnudos_la-dialogs.Tpo $(DEPDIR)/libgnudos_la-dialogs.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='dialogs.c' object='libgnudos_la-dialogs.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libgnudos_la_CFLAGS) $(CFLAGS) -c -o libgnudos_la-dialogs.lo `test -f 'dialogs.c' || echo '$(srcdir)/'`dialogs.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -618,10 +650,10 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/dialogs.Plo
-	-rm -f ./$(DEPDIR)/kbd.Plo
-	-rm -f ./$(DEPDIR)/screen.Plo
-	-rm -f ./$(DEPDIR)/ukbd.Plo
+		-rm -f ./$(DEPDIR)/libgnudos_la-dialogs.Plo
+	-rm -f ./$(DEPDIR)/libgnudos_la-kbd.Plo
+	-rm -f ./$(DEPDIR)/libgnudos_la-screen.Plo
+	-rm -f ./$(DEPDIR)/libgnudos_la-ukbd.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -667,10 +699,10 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/dialogs.Plo
-	-rm -f ./$(DEPDIR)/kbd.Plo
-	-rm -f ./$(DEPDIR)/screen.Plo
-	-rm -f ./$(DEPDIR)/ukbd.Plo
+		-rm -f ./$(DEPDIR)/libgnudos_la-dialogs.Plo
+	-rm -f ./$(DEPDIR)/libgnudos_la-kbd.Plo
+	-rm -f ./$(DEPDIR)/libgnudos_la-screen.Plo
+	-rm -f ./$(DEPDIR)/libgnudos_la-ukbd.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
